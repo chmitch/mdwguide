@@ -6,9 +6,13 @@ Modern Data Warehouse Guide Book
 Here is the set of tracks (LABS) we plan to cover when building out our Modern Data Warehouse Guide Book.  There will be five components that are the typical workloads in a MDW architecture.
  
 	1. Structured Data – ETL w/ SSIS or ADF (DBMS to DBMS)
+
 	2. Semi-structured data – Data from flat files into relational databases
+
 	3. Unstructured Data – Images, audio, video that we can tag and load into DW or Data Lake
+
 	4. Streaming Data – Real-time data
+	
 	5. Interactive query – Ability to query data from Flat files on read
  
 ## Objective
