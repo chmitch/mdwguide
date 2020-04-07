@@ -4,7 +4,7 @@
 
 WWI wants to modernize their data warehouse in phases.  The first stage will be to scale-out horizontally their existing data warehouse (SQL Server OLAP) to Azure Synapse Analytics.
 They like to reuse their existing ETL code and leave their source systems as-is (no migration).  This will require a Hybrid architecture for on-premise OLTP and Azrue Synapse.  This exercise will
-be showcasing how to migrate your traditional SQL Server Data Warehouse (SMP) to Azure Syanpse Analytics (MPP).  Additionally, how to migrate your SSIS code set into Azure Data Factory.
+be showcasing how to migrate your traditional SQL Server (SMP) to Azure Synapse Analytics (MPP).  Additionally, how to migrate your SSIS code set into Azure Data Factory.
 
 ## Environment Setup
 
@@ -12,7 +12,7 @@ WWI runs their existing database platforms on-premise with SQL Server 2017.  The
 is for their data warehouse (OLAP).  You will need to setup both environments as our starting point in the migration.
 
     1. Download both WWI databases (Enterprise Edition) from https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0. The file names are WideWorldImporters-Full.bak
-    and WideWorldImportersDW-Full.bak.  These two files are teh OLTP and OLAP databases respectively.
+    and WideWorldImportersDW-Full.bak.  These two files are the OLTP and OLAP databases respectively.
     2. Install and Configuration instrutions for the OLTP database  https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15
         a. Restore database on a Azure Virtual Machine running SQL Server 2017 https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings
     3. Install and Configuration instrutions for the OLAP database https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-install-configure?view=sql-server-ver15
