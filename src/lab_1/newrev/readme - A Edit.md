@@ -46,7 +46,7 @@ There will be four different object types we'll migrate:
 * SSIS code set refactor
 
 Guidelines will be provided below but you will have to determine how best to migrate.  At the end of the migration compare your 
-end state to the one we've published into the "final" folder.  The detailed migration guide below is here for things to consider during your migration. Please follow this [outline](https://techcommunity.microsoft.com/t5/datacat/migrating-data-to-azure-sql-data-warehouse-in-practice/ba-p/305355) and cross-reference it
+end state to the one we've published into the "FINAL" folder.  The detailed migration guide below is here for things to consider during your migration. Please follow this [outline](https://techcommunity.microsoft.com/t5/datacat/migrating-data-to-azure-sql-data-warehouse-in-practice/ba-p/305355) and cross-reference it
 for a comprehensive list of items to consider during a migraiton. 
 
 ## Database Schema migration steps
@@ -103,11 +103,11 @@ There are three patterns you can reuse across all scripts in the same family (Di
 
 There are numerous strategies and tools to migrate your data from on-premise to Azure [Reference document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading) 
 
-Becasuse the size of this sample database is small, we will take the simplist strategy for this lab; Bulk Copy Program.  You will run BCP commands from the 
+Becasuse the size of this sample database is small, we will take the simplist strategy for this lab; [Bulk Copy Program](https://docs.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=sql-server-ver15) (BCP).  You will run BCP commands from the 
 SQL Server Virtual Machine that hosts the OLAP database.  BCP export will extract the data to a txt file on your local machine.  BCP import will be run from the same Virtual
 machine there the text files reside.  The user name and password will need to be updated to your Azure Synapse instance.
 
-1. Run this SQL script to generate a view in the OLAP database before you run BCP commands. WideWorldImportersDW - Prereq for Export.txt
+1. Run this SQL script to generate a view in the OLAP database before you run BCP commands. [link](newrev/WideWorldImportersDW - Prereq for Export.txt)
 2. Create BCP Scripts for each dimension, staging and fact table.  Those DDL scripts where you modified the columns will require you to define the columns to extract
 3. Execute BCP scripts as a batch file.  Place file in the same diretory as the flat files and open a command prompt and go to this directoy.  Run the batch file
 4. Create BCP Scripts to import the data in Azure Synapse Analytics.  Due to low data volume there is no need to first migrate them to Azure
