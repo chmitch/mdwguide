@@ -35,16 +35,15 @@ The objective of this lab is to migrate the WWI DW (OLAP) to Azure Synapse Analy
 datawarehouse by adding new server nodes (compute) rather than adding more PROCS to the server.  
 
 Reference:
->[Architecture Document of the MPP platform](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
->
->[SQL Server Database to Azure Synapse Data Migration Guide](https://datamigration.microsoft.com/scenario/sql-to-sqldw?step=1)
+*[Architecture Document of the MPP platform](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+*[SQL Server Database to Azure Synapse Analytics - Data Migration Guide](https://datamigration.microsoft.com/scenario/sql-to-sqldw?step=1)
 
 There will be four different object types we'll migrate; 
 
-1. Database Schema
-2. Database code (Store Procedure, Function, Triggers, etc)
-3. Data
-4. SSIS code set refactor
+* Database Schema
+* Database code (Store Procedure, Function, Triggers, etc)
+* Data
+* SSIS code set refactor
 
 This lab will have four migration sections for each object type.  Guidelines will be provided but you will have to determine how best to migrate.  At the end of the migration compare your 
 end state to the one we've published into the "final" folder.  A detailed migration guide is here for things to consider during your migration.  Please follow this outline and cross-reference this
@@ -63,12 +62,12 @@ There are four files in this root directory that have a prefix "WideWorldImporte
 1. Go to WWI DW database and right click on database and select "Generate Scripts".  This will export all DDL statements for the database tables and schema.
 2. Create a user defined schema for each tier of the data warehouse; Staging, Dimension, Fact.
 3. Items that require refactoring (You can refer to this [document](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=aps-pdw-2016-au7) for more information)
-    1. Data types
-    2. Column length
-    3. Replace Identity for Sequences
-    4. Identify which tables are hash, replicated and round-robin
-    5. Determine your distribution column (HINT IDENTITY Column can not be your distribution key)
-    6. Some Fact Table primary key are a composite key from source system
+    * Data types
+    * Column length
+    * Replace Identity for Sequences
+    * Identify which tables are hash, replicated and round-robin
+    * Determine your distribution column (HINT IDENTITY Column can not be your distribution key)
+    * Some Fact Table primary key are a composite key from source system
 4. Execute these scripts on the Azure Synapse Analytics database
 5. Run this query to identify which columns are not supported by Azure SQL Data Warehouse
 ```
