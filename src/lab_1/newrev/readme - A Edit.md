@@ -35,8 +35,8 @@ The objective of this lab is to migrate the WWI DW (OLAP) to Azure Synapse Analy
 datawarehouse by adding new server nodes (compute) rather than adding more PROCS to the server.  
 
 Reference:
-*[Architecture Document of the MPP platform](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
-*[SQL Server Database to Azure Synapse Analytics - Data Migration Guide](https://datamigration.microsoft.com/scenario/sql-to-sqldw?step=1)
+* [Architecture Document of the MPP platform](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+* [SQL Server Database to Azure Synapse Analytics - Data Migration Guide](https://datamigration.microsoft.com/scenario/sql-to-sqldw?step=1)
 
 There will be four different object types we'll migrate; 
 
