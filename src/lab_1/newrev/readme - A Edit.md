@@ -14,9 +14,9 @@ is for their data warehouse (OLAP).  You will need to setup both environments as
 1. Download both WWI databases (Enterprise Edition). [link](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0). The file names are WideWorldImporters-Full.bak
     and WideWorldImportersDW-Full.bak.  These two files are the OLTP and OLAP databases respectively.
 2. Install and Configuration instrutions for the OLTP database. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15)
-a. Restore database on a Azure Virtual Machine running SQL Server 2017. [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings)
+> Restore database on a Azure Virtual Machine running SQL Server 2017. [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings)
 3. Install and Configuration instrutions for the OLAP database [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-install-configure?view=sql-server-ver15)
-a. Restore database on a Azure Virtual Machine running SQL Server 2017. [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings)
+> Restore database on a Azure Virtual Machine running SQL Server 2017. [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings)
 4. Review the database catalog on the data warehouse for familiarity of the schema. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-database-catalog?view=sql-server-ver15)
 5. Review ETL workflow to understand the data flow and architecture. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-perform-etl?view=sql-server-ver15)
 6. Create an Azure Synapse Analytics Data Warehouse with the lowest DWU. [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal)
