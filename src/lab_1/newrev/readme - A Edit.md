@@ -67,12 +67,12 @@ There are four files in this root directory that have a prefix "WideWorldImporte
    f. Some Fact Table primary key are a composite key from source system
 4. Execute these scripts on the Azure Synapse Analytics database
 5. Run this query to identify which columns are not supported by Azure SQL Data Warehouse
-	SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
+```SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
 	FROM sys.tables  t
 	JOIN sys.columns c on t.[object_id]    = c.[object_id]
 	JOIN sys.types   y on c.[user_type_id] = y.[user_type_id]
 	WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','sql_variant','timestamp','xml')
-	AND  y.[is_user_defined] = 1;
+	AND  y.[is_user_defined] = 1;```
 6. Review IDENTITY article to ensure surrogate keys are in the right sequence. [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity)
     
 
