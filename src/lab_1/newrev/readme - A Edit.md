@@ -17,8 +17,8 @@ is for their data warehouse (OLAP).  You will need to setup both environments as
 >These two files are the OLTP and OLAP databases respectively.
 3. Follow this [Install and Configuration Instrution for the OLTP database](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15)
 4. Follow this [Install and Configuration Instrution for the OLAP database](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-install-configure?view=sql-server-ver15)
-5. Review the database catalog on the data warehouse for familiarity of the schema [Document Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-database-catalog?view=sql-server-ver15)
-6. Review ETL workflow to understand the data flow and architecture [Document Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-perform-etl?view=sql-server-ver15)
+5. Review the database catalog on the data warehouse for familiarity of the schema [Reference document](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-database-catalog?view=sql-server-ver15)
+6. Review ETL workflow to understand the data flow and architecture [Reference document](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-perform-etl?view=sql-server-ver15)
 7. Create an Azure Synapse Analytics Data Warehouse with the lowest DWU [Step by step guidance](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal)
 
 ## Tools
@@ -38,25 +38,23 @@ Reference:
 1. [Architecture Document of the MPP platform](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
 2. [SQL Server Database to Azure Synapse Analytics - Data Migration Guide](https://datamigration.microsoft.com/scenario/sql-to-sqldw?step=1)
 
-There will be four different object types we'll migrate; 
+There will be four different object types we'll migrate:
 
 * Database Schema
 * Database code (Store Procedure, Function, Triggers, etc)
 * Data
 * SSIS code set refactor
 
-This lab will have four migration sections for each object type.  Guidelines will be provided but you will have to determine how best to migrate.  At the end of the migration compare your 
-end state to the one we've published into the "final" folder.  A detailed migration guide is here for things to consider during your migration.  Please follow this outline and cross-reference this
-for a comprehensive list of items to consider during a migraiton.  [Link](https://techcommunity.microsoft.com/t5/datacat/migrating-data-to-azure-sql-data-warehouse-in-practice/ba-p/305355)
+Guidelines will be provided below but you will have to determine how best to migrate.  At the end of the migration compare your 
+end state to the one we've published into the "final" folder.  The detailed migration guide below is here for things to consider during your migration. Please follow this [outline](https://techcommunity.microsoft.com/t5/datacat/migrating-data-to-azure-sql-data-warehouse-in-practice/ba-p/305355) and cross-reference it
+for a comprehensive list of items to consider during a migraiton. 
 
 ## Database Schema migration steps
 
 Database schemas need to be migrated from SQL Server to Azure Synapse.  Due to the MPP architecture, this will be more than just a data type translation exericse.  You will need to focus
-on how best to distribute the data across each table.  [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview).  A list of unsupported data types
-can be found in this article and how to find the best alternative.  [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types)
+on how best to distribute the data across each table follow this [document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview).  A list of unsupported data types can be found in this [article](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) and how to find the best alternative. 
 
-As a learning tool, the Data Warehouse migration utility can be a guided approach to migrating your schemas.  I suggest you run the tool to determine incompatibilities but actually generate the scripts
-by hand.  Here is a set of instructions to follow to use the utility.  [Link](https://www.sqlservercentral.com/articles/azure-dwh-part-11-data-warehouse-migration-utility)  
+As a learning tool, the Data Warehouse migration utility can be a guided approach to migrating your schemas.  I suggest you run the tool to determine incompatibilities but actually generate the scripts by hand.  Here is [a set of instructions](https://www.sqlservercentral.com/articles/azure-dwh-part-11-data-warehouse-migration-utility) to follow to use the utility.  
 There are four files in this root directory that have a prefix "WideWorldImportersDW".  These are output files from the migration utility that can provide guidance on what needs to be refactored.
 
 1. Go to WWI DW database and right click on database and select "Generate Scripts".  This will export all DDL statements for the database tables and schema.
@@ -78,21 +76,21 @@ SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_def
 	WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','sql_variant','timestamp','xml')
 	AND  y.[is_user_defined] = 1;
 ```
-6. Review IDENTITY article to ensure surrogate keys are in the right sequence. [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity)
+6. Review IDENTITY article to ensure surrogate keys are in the right sequence [Reference document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity)
     
 
 ## Database code rewrite
 
-Review the SSIS jobs that are at this [Link](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac)  This job leverages
+Review the SSIS jobs that are at this [Github repo](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac)  This job leverages
 stored procedures in the Source and Target databases extensively.  This will require a refactoring of the Stored procedures for the OLAP database when you repoint the ETL
-target to Azure Synapse.  There are a number of design considerations you wil need to consider when refactoring this code.  Please read this [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-develop
+target to Azure Synapse.  There are a number of design considerations you wil need to consider when refactoring this code.  Please read this [document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-develop
 ) for more detail. 
 There are three patterns you can reuse across all scripts in the same family (Dimension & Fact).  
 
 1. Rewrite Dimension T-SQL 
     1. UPDATE Statement can not leverage joins or subqueries.  Refactor code to resolve these issues.  
     2. Exec as and Return can be removed for this lab
-    3. Fix Common table Expression (WITH) [Link](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15#features-and-limitations-of-common-table-expressions-in--and-)
+    3. Fix Common table Expression (WITH) [Reference document](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15#features-and-limitations-of-common-table-expressions-in--and-)
 2. Rewrite Fact T-SQL -- Same applies for UPDATE Statement but DELETE statement will require modification due to join
     1. Movement T-SQL is a special fact table that leverages a MERGE Statement.  Merge is not supported today in Azure Synapse.  You will need to split it out into an Update and Insert statement
 3. Rewrite Load control tables
@@ -102,7 +100,9 @@ There are three patterns you can reuse across all scripts in the same family (Di
 
 ## Data Migration
 
-There are numerous strategies and tools to migrate your data from on-premise to Azure.[Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading) Becasuse the size of this sample database is small, we will take the simplist strategy for this lab; Bulk Copy Program.  You will run BCP commands from the 
+There are numerous strategies and tools to migrate your data from on-premise to Azure. [Reference document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading) 
+
+Becasuse the size of this sample database is small, we will take the simplist strategy for this lab; Bulk Copy Program.  You will run BCP commands from the 
 SQL Server Virtual Machine that hosts the OLAP database.  BCP export will extract the data to a txt file on your local machine.  BCP import will be run from the same Virtual
 machine there the text files reside.  The user name and password will need to be updated to your Azure Synapse instance.
 
@@ -110,13 +110,13 @@ machine there the text files reside.  The user name and password will need to be
 2. Create BCP Scripts for each dimension, staging and fact table.  Those DDL scripts where you modified the columns will require you to define the columns to extract
 3. Execute BCP scripts as a batch file.  Place file in the same diretory as the flat files and open a command prompt and go to this directoy.  Run the batch file
 4. Create BCP Scripts to import the data in Azure Synapse Analytics.  Due to low data volume there is no need to first migrate them to Azure
-5. Review Data Skew of Distributed Tables to see if your distribution keys are accurate. [Link](https://github.com/rgl/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-manage-distributed-data-skew.md)
+5. Review Data Skew of Distributed Tables to see if your distribution keys are accurate. [Reference document](https://github.com/rgl/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-manage-distributed-data-skew.md)
 
 ## SSIS Job 
 
 Data movement in first lab will be execution of Daily.ETL.ispac job in Azure Data Factory SSIS Runtime.  This lab will reuse data pipelines to minimize migration costs.
 As data volumes increase, these jobs will need to leverage a MPP platform like Databricks, Synapse, HDInsight to transform the data at scale.  This will be done in a future lab.
-Setup your SSIS job following these instructions. [Link](https://docs.microsoft.com/en-us/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial?view=sql-server-ver15)
+Setup your SSIS job following these instructions. [Reference document](https://docs.microsoft.com/en-us/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial?view=sql-server-ver15)
 
 1. Open SSIS package and change Source and Destination database connections. Change the login from Windows Auth to SQL Auth
 2. Update each mapping that required DDL changes.
