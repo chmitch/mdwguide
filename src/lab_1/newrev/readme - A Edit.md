@@ -87,15 +87,15 @@ target to Azure Synapse.  There are a number of design considerations you wil ne
 There are three patterns you can reuse across all scripts in the same family (Dimension & Fact).  
 
 1. Rewrite Dimension T-SQL 
-   a. UPDATE Statement can not leverage joins or subqueries.  Refactor code to resolve these issues.  
-   b. Exec as and Return can be removed for this lab
-   c. Fix Common table Expression (WITH) [Link](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15#features-and-limitations-of-common-table-expressions-in--and-)
+    1. UPDATE Statement can not leverage joins or subqueries.  Refactor code to resolve these issues.  
+    2. Exec as and Return can be removed for this lab
+    3. Fix Common table Expression (WITH) [Link](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15#features-and-limitations-of-common-table-expressions-in--and-)
 2. Rewrite Fact T-SQL -- Same applies for UPDATE Statement but DELETE statement will require modification due to join
-   a. Movement T-SQL is a special fact table that leverages a MERGE Statement.  Merge is not supported today in Azure Synapse.  You will need to split it out into an Update and Insert statement
+    1. Movement T-SQL is a special fact table that leverages a MERGE Statement.  Merge is not supported today in Azure Synapse.  You will need to split it out into an Update and Insert statement
 3. Rewrite Load control tables
-   a. PopulateDateDimensionForYear -- User Defined Functions are not supported in Azure Synapse
-   b. GetLineageKey -- 
-   c. GetLastETLCutoffTime -- @@RowCount not supported
+    1. PopulateDateDimensionForYear -- User Defined Functions are not supported in Azure Synapse
+    2. GetLineageKey -- 
+    3. GetLastETLCutoffTime -- @@RowCount not supported
 
 ## Data Migration
 
