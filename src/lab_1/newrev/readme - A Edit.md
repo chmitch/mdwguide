@@ -11,16 +11,15 @@ be showcasing how to migrate your traditional SQL Server (SMP) to Azure Synapse 
 WWI runs their existing database platforms on-premise with SQL Server 2017.  There are two databases samples for WWI.  The first one is for their Line of Business application (OLTP) and the second
 is for their data warehouse (OLAP).  You will need to setup both environments as our starting point in the migration.
 
-1. Download both WWI databases (Enterprise Edition). [Link](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0). 
+1. If you do not have a on-premise SQL Server 2017, you can provision a Azure Virtual Machine running SQL Server 2017. [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings)
+2. Download both WWI databases (Enterprise Edition) to your on-premise SQL server or Azure VM you have just provisioned. [Link](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0). 
 >The file names are WideWorldImporters-Full.bak and WideWorldImportersDW-Full.bak.  
 >These two files are the OLTP and OLAP databases respectively.
-2. Install and Configuration instrutions for the OLTP database. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15)
-> Restore database on a Azure Virtual Machine running SQL Server 2017. [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings)
-3. Install and Configuration instrutions for the OLAP database [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-install-configure?view=sql-server-ver15)
-> Restore database on a Azure Virtual Machine running SQL Server 2017. [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings)
-4. Review the database catalog on the data warehouse for familiarity of the schema. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-database-catalog?view=sql-server-ver15)
-5. Review ETL workflow to understand the data flow and architecture. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-perform-etl?view=sql-server-ver15)
-6. Create an Azure Synapse Analytics Data Warehouse with the lowest DWU. [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal)
+3. Follow [this Install and Configuration Instrution for the OLTP database](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15)
+4. Follow [this Install and Configuration Instrution for the OLAP database](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-install-configure?view=sql-server-ver15)
+5. Review the database catalog on the data warehouse for familiarity of the schema. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-database-catalog?view=sql-server-ver15)
+6. Review ETL workflow to understand the data flow and architecture. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-perform-etl?view=sql-server-ver15)
+7. Create an Azure Synapse Analytics Data Warehouse with the lowest DWU. [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal)
 
 ## Tools
 
