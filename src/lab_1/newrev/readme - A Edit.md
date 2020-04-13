@@ -59,13 +59,13 @@ There are four files in this root directory that have a prefix "WideWorldImporte
 
 1. Go to WWI DW database and right click on database and select "Generate Scripts".  This will export all DDL statements for the database tables and schema.
 2. Create a user defined schema for each tier of the data warehouse; Staging, Dimension, Fact.
-3. Items that require refactoring (You can refer to [this document](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=aps-pdw-2016-au7) for more information)
-   a. Data types
-   b. Column length
-   c. Replace Identity for Sequences
-   d. Identify which tables are hash, replicated and round-robin
-   e. Determine your distribution column (HINT IDENTITY Column can not be your distribution key)
-   f. Some Fact Table primary key are a composite key from source system
+3. Items that require refactoring (You can refer to this [document](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=aps-pdw-2016-au7) for more information)
+    1. Data types
+    2. Column length
+    3. Replace Identity for Sequences
+    4. Identify which tables are hash, replicated and round-robin
+    5. Determine your distribution column (HINT IDENTITY Column can not be your distribution key)
+    6. Some Fact Table primary key are a composite key from source system
 4. Execute these scripts on the Azure Synapse Analytics database
 5. Run this query to identify which columns are not supported by Azure SQL Data Warehouse
 ```
@@ -81,9 +81,9 @@ SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_def
 
 ## Database code rewrite
 
-Review the SSIS jobs that are at this [link](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac)  This job leverages
+Review the SSIS jobs that are at this [Link](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac)  This job leverages
 stored procedures in the Source and Target databases extensively.  This will require a refactoring of the Stored procedures for the OLAP database when you repoint the ETL
-target to Azure Synapse.  There are a number of design considerations you wil need to consider when refactoring this code.  Please read [this link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-develop
+target to Azure Synapse.  There are a number of design considerations you wil need to consider when refactoring this code.  Please read this [Link](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-develop
 ) for more detail. 
 There are three patterns you can reuse across all scripts in the same family (Dimension & Fact).  
 
