@@ -36,6 +36,7 @@ datawarehouse by adding new server nodes (compute) rather than adding more PROCS
 
 Reference:
 >[Architecture Document of the MPP platform](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+>
 >[SQL Server Database to Azure Synapse Data Migration Guide](https://datamigration.microsoft.com/scenario/sql-to-sqldw?step=1)
 
 There will be four different object types we'll migrate; 
