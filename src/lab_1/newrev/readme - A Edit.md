@@ -107,7 +107,7 @@ Becasuse the size of this sample database is small, we will take the simplist st
 SQL Server Virtual Machine that hosts the OLAP database.  BCP export will extract the data to a txt file on your local machine.  BCP import will be run from the same Virtual
 machine there the text files reside.  The user name and password will need to be updated to your Azure Synapse instance.
 
-1. Run this SQL script to generate a view in the OLAP database before you run BCP commands. [link](newrev/WideWorldImportersDW - Prereq for Export.txt)
+1. Run the SQL script in this repository called "WideWorldImportersDW - Prereq for Export.txt" to generate a view in the OLAP database before you run BCP commands.
 2. Create BCP Scripts for each dimension, staging and fact table.  Those DDL scripts where you modified the columns will require you to define the columns to extract
 3. Execute BCP scripts as a batch file.  Place file in the same diretory as the flat files and open a command prompt and go to this directoy.  Run the batch file
 4. Create BCP Scripts to import the data in Azure Synapse Analytics.  Due to low data volume there is no need to first migrate them to Azure
