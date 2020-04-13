@@ -11,8 +11,9 @@ be showcasing how to migrate your traditional SQL Server (SMP) to Azure Synapse 
 WWI runs their existing database platforms on-premise with SQL Server 2017.  There are two databases samples for WWI.  The first one is for their Line of Business application (OLTP) and the second
 is for their data warehouse (OLAP).  You will need to setup both environments as our starting point in the migration.
 
-1. Download both WWI databases (Enterprise Edition). [link](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0). The file names are WideWorldImporters-Full.bak
-    and WideWorldImportersDW-Full.bak.  These two files are the OLTP and OLAP databases respectively.
+1. Download both WWI databases (Enterprise Edition). [link](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0). 
+>The file names are WideWorldImporters-Full.bak and WideWorldImportersDW-Full.bak.  
+>These two files are the OLTP and OLAP databases respectively.
 2. Install and Configuration instrutions for the OLTP database. [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-oltp-install-configure?view=sql-server-ver15)
 > Restore database on a Azure Virtual Machine running SQL Server 2017. [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings)
 3. Install and Configuration instrutions for the OLAP database [Link](https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-dw-install-configure?view=sql-server-ver15)
