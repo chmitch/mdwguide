@@ -23,10 +23,10 @@ is for their data warehouse (OLAP).  You will need to setup both environments as
 
 ## Tools
 
-[SQL Server Management Studion (Version 18.x or higher)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
-    2. Visual Studio 2017 with Integration Services https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings 
-    3. Power BI Desktop
-    4. DataWarehouseMigrationUtility.zip (Learning tool and not recommended for actual migrations)
+[	1. SQL Server Management Studion (Version 18.x or higher)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+[	2. Visual Studio 2017 with Integration Services] (https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision#1-configure-basic-settings) 
+[	3. Power BI Desktop] (https://www.microsoft.com/en-us/download/details.aspx?id=58494)
+	4. DataWarehouseMigrationUtility.zip (Located in this repo. This is a Learning tool in and not recommended for actual migrations)
 
 
 ## Migration Overview
