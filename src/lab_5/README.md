@@ -1,10 +1,14 @@
-# 	Lab 5 Interactive Query
+# 	Lab 5 Analytics Migration
 
 ## Goal
-Query Data Lake and Data Warehouse thru Databricks.  Query clickstream data from Lab #2 and join it to data from WWI DW database in Lab #1.  We want to showcase number of clicks per customers and lifetime revenue.
+Key Modules
+1. Create tabular model in SSDT and migrate into Power BI Premium
+2. Publish PBI Desktop to PBI Service
+3. Create some SSRS reports and use them in Paginated reports (Use functions github labs)
 
 ## Dataset
-Web clickstream data https://2015.recsyschallenge.com/
-WWI Database https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers 
+Samples reports in https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/power-bi-dashboards
+
 
 ## Knowledgebase
+

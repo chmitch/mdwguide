@@ -1,10 +1,14 @@
-# 	Lab 2 Semi-structured data 
+# 	Challenge 2 Data Lake integration
 
 ## Goal
-Load data from Data Lake into relational database.  (RDBMS)  We plan to transform this data via Python in Azure Data Bricks and materialize it in DBFS.  The summary table will be written back to Data Lake for ingestion.
+Key Modules
+1. Setup network infrastructure for Hybrid environment
+2. Data Extract jobs to pull data into flat files from source
+3. ADF jobs to copy activity into Staging area of Lake
+4. Build out Data Lake Tiers (raw, cleaned, presentation)
+5. Setup folder level access to raw data for service account only.
 
 ## Dataset
-
-Web clickstream data https://2015.recsyschallenge.com/
+Flat files can be generated from BCP exports or use the blob storage sample 'wasbs://wideworldimporters@sqldwholdata.blob.core.windows.net' 
 
 ## Knowledgebase

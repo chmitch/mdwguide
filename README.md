@@ -1,5 +1,5 @@
-# mdwguide
-Modern Data Warehouse What the Hack
+# Modern Data Warehouse What the Hack
+Modern Data Warehouse Hack
 
 ## Challenges
 Here is the set of challenges we plan to cover when building out our Modern Data Warehouse.  There will be six challenges that are the typical workloads in a MDW architecture.  The challenge will focus on migration activity from an existing SQL data platform to Azure Synapse Analytics.
@@ -37,3 +37,13 @@ For us to get started, we’ve identified the Worldwide Importers as our OLTP an
 	6. Mission critical app -- Whiteboard session to build out reference architecture
 			
 Our goal is to have an end-to-end story that covers all Azure Data Services and explains common patterns so they can learn how to build it themselves.
+
+## Learning Path for Modern Data Warehouse
+
+[Modern Data Warehouse](https://github.com/bhitney/Learning-Plans/wiki/Data-&-AI-Modern-Data-Warehouse)
+
+* Modern Data Warehouse Learning Path to help upskill Data Engineers to build out MDW platforms
+
+* Good reference material to learn key concepts and hands-on labs to get practical experience
+
+* Different labs, github project and What the Hack can be reusable code if required
