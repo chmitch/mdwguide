@@ -1,4 +1,4 @@
-# Modern Data Warehouse What the Hack
+# Modern Data Warehouse Hack
 Modern Data Warehouse Hack
 
 ## Challenges
