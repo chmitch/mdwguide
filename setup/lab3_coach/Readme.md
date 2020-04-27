@@ -24,4 +24,8 @@ These templates can be used to deploy resources required to complete this soluti
 
 1. [adfMDWHack_ARM](./ARM%20Templates/adfMDWHack_ARM) - ARM Template for all objects included in Azure Data Factory including pipelines 
 
-   
+### Other Dependencies
+
+In addition to items outlined above, this lab will also require an Azure Storage Account that can be used to land and store the data being ingested.
+
+(Note: this can be the same account created and used in lab 2)
