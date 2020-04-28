@@ -1,4 +1,4 @@
-# 	Lab 3 Redesign SSIS jobs into ELT with ADF
+# 	Challenge 3: Redesign SSIS jobs into ELT with ADF
 
 ## Overview
 
