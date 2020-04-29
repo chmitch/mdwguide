@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "value": "adfMDWHack"
+        },
+        "SQL_Source_connectionString": {
+            "value": ""
+        },
+        "TargetASA_connectionString": {
+            "value": ""
+        },
+        "adls_accountKey": {
+            "value": ""
+        },
+        "adls_properties_typeProperties_url": {
+            "value": "https://akmdwhackstorage.dfs.core.windows.net"
+        }
+    }
+}

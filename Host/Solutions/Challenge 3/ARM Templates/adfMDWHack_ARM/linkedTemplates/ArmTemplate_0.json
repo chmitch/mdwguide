@@ -1,0 +1,871 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "adfMDWHack"
+        },
+        "SQL_Source_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'SQL_Source'"
+        },
+        "TargetASA_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'TargetASA'"
+        },
+        "adls_accountKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accountKey' of 'adls'"
+        },
+        "adls_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://akmdwhackstorage.dfs.core.windows.net"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL_Source')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "SqlServer",
+                "typeProperties": {
+                    "connectionString": "[parameters('SQL_Source_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/TargetASA')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDW",
+                "typeProperties": {
+                    "connectionString": "[parameters('TargetASA_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/adls')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobFS",
+                "typeProperties": {
+                    "url": "[parameters('adls_properties_typeProperties_url')]",
+                    "accountKey": {
+                        "type": "SecureString",
+                        "value": "[parameters('adls_accountKey')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ArchiveDir')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "adls",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "FileName": {
+                        "type": "string"
+                    }
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "folderPath": {
+                            "value": "@concat('Dev/WWIDW/Archive/', dataset().FileName, '/')",
+                            "type": "Expression"
+                        },
+                        "fileSystem": "akmdwstorage"
+                    },
+                    "columnDelimiter": "|",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": ""
+                },
+                "schema": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/adls')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SourceDir')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "adls",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "FileName": {
+                        "type": "string"
+                    }
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "folderPath": {
+                            "value": "@concat('Dev/WWIDW/Working/', dataset().FileName, '/')",
+                            "type": "Expression"
+                        },
+                        "fileSystem": "akmdwstorage"
+                    },
+                    "columnDelimiter": "|",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": ""
+                },
+                "schema": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/adls')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SourceTable')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "SQL_Source",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [],
+                "typeProperties": {}
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/SQL_Source')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/TargetASA')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "TargetASA",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {}
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/TargetASA')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/TargetFile')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "adls",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "FileName": {
+                        "type": "string"
+                    }
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@concat(dataset().FileName, '_', pipeline().RunId , '.txt')",
+                            "type": "Expression"
+                        },
+                        "folderPath": {
+                            "value": "@concat('Dev/WWIDW/Working/', dataset().FileName)",
+                            "type": "Expression"
+                        },
+                        "fileSystem": "akmdwstorage"
+                    },
+                    "columnDelimiter": "|",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": ""
+                },
+                "schema": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/adls')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/pl_ArchiveFiles')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "ArchiveFiles",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "DelimitedTextSource",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSReadSettings",
+                                    "recursive": true,
+                                    "wildcardFileName": "*.txt",
+                                    "enablePartitionDiscovery": false
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextReadSettings"
+                                }
+                            },
+                            "sink": {
+                                "type": "DelimitedTextSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextWriteSettings",
+                                    "quoteAllText": true,
+                                    "fileExtension": ".txt"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SourceDir",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@pipeline().parameters.TableName",
+                                        "type": "Expression"
+                                    }
+                                }
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "ArchiveDir",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@pipeline().parameters.TableName",
+                                        "type": "Expression"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Delete Original Staged File",
+                        "type": "Delete",
+                        "dependsOn": [
+                            {
+                                "activity": "ArchiveFiles",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataset": {
+                                "referenceName": "SourceDir",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@pipeline().parameters.TableName",
+                                        "type": "Expression"
+                                    }
+                                }
+                            },
+                            "logStorageSettings": {
+                                "linkedServiceName": {
+                                    "referenceName": "adls",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "path": "akmdwstorage/Dev/WWIDW/Logs"
+                            },
+                            "enableLogging": true,
+                            "storeSettings": {
+                                "type": "AzureBlobFSReadSettings",
+                                "recursive": true,
+                                "wildcardFileName": "*.txt"
+                            }
+                        }
+                    }
+                ],
+                "parameters": {
+                    "TableName": {
+                        "type": "string"
+                    }
+                },
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/SourceDir')]",
+                "[concat(variables('factoryId'), '/datasets/ArchiveDir')]",
+                "[concat(variables('factoryId'), '/linkedServices/adls')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/pl_Import Data From SRC')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Copy Table To ADLS",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "Get Low Watermark",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "Get High Watermark",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlServerSource",
+                                "sqlReaderStoredProcedureName": "[[Integration].[GetUpdates]",
+                                "storedProcedureParameters": {
+                                    "LastCutoff": {
+                                        "type": "String",
+                                        "value": {
+                                            "value": "@{activity('Get Low Watermark').output.firstRow.CutoffTime}",
+                                            "type": "Expression"
+                                        }
+                                    },
+                                    "NewCutoff": {
+                                        "type": "String",
+                                        "value": {
+                                            "value": "@{activity('Get High Watermark').output.firstRow.load_date}",
+                                            "type": "Expression"
+                                        }
+                                    },
+                                    "TableName": {
+                                        "type": "String",
+                                        "value": {
+                                            "value": "@pipeline().parameters.TableName",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                },
+                                "queryTimeout": "02:00:00"
+                            },
+                            "sink": {
+                                "type": "DelimitedTextSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextWriteSettings",
+                                    "quoteAllText": true,
+                                    "fileExtension": ".txt"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SourceTable",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "TargetFile",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@pipeline().parameters.TableName",
+                                        "type": "Expression"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Stage Data",
+                        "type": "SqlServerStoredProcedure",
+                        "dependsOn": [
+                            {
+                                "activity": "Copy Table To ADLS",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "storedProcedureName": {
+                                "value": "@concat('[Integration].[Ingest', replace(pipeline().parameters.TableName,' ',''), 'Data]')",
+                                "type": "Expression"
+                            }
+                        },
+                        "linkedServiceName": {
+                            "referenceName": "TargetASA",
+                            "type": "LinkedServiceReference"
+                        }
+                    },
+                    {
+                        "name": "Load Data",
+                        "type": "SqlServerStoredProcedure",
+                        "dependsOn": [
+                            {
+                                "activity": "Create Lineage Key",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "storedProcedureName": {
+                                "value": "@concat('[Integration].[MigrateStaged',replace(pipeline().parameters.TableName, ' ', ''),'Data]')",
+                                "type": "Expression"
+                            }
+                        },
+                        "linkedServiceName": {
+                            "referenceName": "TargetASA",
+                            "type": "LinkedServiceReference"
+                        }
+                    },
+                    {
+                        "name": "Get Low Watermark",
+                        "type": "Lookup",
+                        "dependsOn": [
+                            {
+                                "activity": "Prep Target Directory",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlDWSource",
+                                "sqlReaderQuery": {
+                                    "value": "@concat('execute integration.getlastetlcutofftime ''', pipeline().parameters.TableName,'''\nWITH RESULT SETS (\n(\n[Cutoff Time] nvarchar(50)\n)\n\n)')",
+                                    "type": "Expression"
+                                },
+                                "queryTimeout": "02:00:00"
+                            },
+                            "dataset": {
+                                "referenceName": "TargetASA",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        }
+                    },
+                    {
+                        "name": "Get High Watermark",
+                        "type": "Lookup",
+                        "dependsOn": [
+                            {
+                                "activity": "Prep Target Directory",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlDWSource",
+                                "sqlReaderQuery": "select cast(load_date as nvarchar(50)) load_date\nfrom integration.load_control",
+                                "queryTimeout": "02:00:00"
+                            },
+                            "dataset": {
+                                "referenceName": "TargetASA",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        }
+                    },
+                    {
+                        "name": "Prep Target Directory",
+                        "type": "ExecutePipeline",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "pipeline": {
+                                "referenceName": "pl_ArchiveFiles",
+                                "type": "PipelineReference"
+                            },
+                            "waitOnCompletion": true,
+                            "parameters": {
+                                "TableName": {
+                                    "value": "@pipeline().parameters.TableName",
+                                    "type": "Expression"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Archive Flat Files",
+                        "type": "ExecutePipeline",
+                        "dependsOn": [
+                            {
+                                "activity": "Load Data",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "pipeline": {
+                                "referenceName": "pl_ArchiveFiles",
+                                "type": "PipelineReference"
+                            },
+                            "waitOnCompletion": true,
+                            "parameters": {
+                                "TableName": {
+                                    "value": "@pipeline().parameters.TableName",
+                                    "type": "Expression"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Create Lineage Key",
+                        "type": "SqlServerStoredProcedure",
+                        "dependsOn": [
+                            {
+                                "activity": "Stage Data",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "storedProcedureName": "[[Integration].[CreateLineageKey]",
+                            "storedProcedureParameters": {
+                                "TableName": {
+                                    "value": {
+                                        "value": "@pipeline().parameters.TableName",
+                                        "type": "Expression"
+                                    },
+                                    "type": "String"
+                                }
+                            }
+                        },
+                        "linkedServiceName": {
+                            "referenceName": "TargetASA",
+                            "type": "LinkedServiceReference"
+                        }
+                    }
+                ],
+                "parameters": {
+                    "TableName": {
+                        "type": "string"
+                    }
+                },
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/SourceTable')]",
+                "[concat(variables('factoryId'), '/datasets/TargetFile')]",
+                "[concat(variables('factoryId'), '/linkedServices/TargetASA')]",
+                "[concat(variables('factoryId'), '/datasets/TargetASA')]",
+                "[concat(variables('factoryId'), '/pipelines/pl_ArchiveFiles')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/pl_TableControl')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Get Tables",
+                        "type": "Lookup",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlDWSource",
+                                "sqlReaderQuery": {
+                                    "value": "@concat('select [Table Name] as TableName\n  from integration.[etl cutoffs]\nwhere isActive = 1 and GroupId = ',string(pipeline().parameters.GroupNumber), ' \norder by sequenceid')",
+                                    "type": "Expression"
+                                },
+                                "queryTimeout": "02:00:00"
+                            },
+                            "dataset": {
+                                "referenceName": "TargetASA",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            },
+                            "firstRowOnly": false
+                        }
+                    },
+                    {
+                        "name": "Table List Iterator",
+                        "type": "ForEach",
+                        "dependsOn": [
+                            {
+                                "activity": "Assign Table List Array",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "items": {
+                                "value": "@variables('TableNames')",
+                                "type": "Expression"
+                            },
+                            "isSequential": false,
+                            "activities": [
+                                {
+                                    "name": "Execute pl_Import Data From SRC",
+                                    "type": "ExecutePipeline",
+                                    "dependsOn": [],
+                                    "userProperties": [],
+                                    "typeProperties": {
+                                        "pipeline": {
+                                            "referenceName": "pl_Import Data From SRC",
+                                            "type": "PipelineReference"
+                                        },
+                                        "waitOnCompletion": true,
+                                        "parameters": {
+                                            "TableName": {
+                                                "value": "@item().TableName",
+                                                "type": "Expression"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Assign Table List Array",
+                        "type": "SetVariable",
+                        "dependsOn": [
+                            {
+                                "activity": "Get Tables",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "TableNames",
+                            "value": {
+                                "value": "@activity('Get Tables').output.value",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "parameters": {
+                    "GroupNumber": {
+                        "type": "int"
+                    }
+                },
+                "variables": {
+                    "TableNames": {
+                        "type": "Array"
+                    },
+                    "TableName": {
+                        "type": "String"
+                    }
+                },
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/TargetASA')]",
+                "[concat(variables('factoryId'), '/pipelines/pl_Import Data From SRC')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/pl_GroupControl')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Get Groups",
+                        "type": "Lookup",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlDWSource",
+                                "sqlReaderQuery": "SELECT DISTINCT GroupID\nFROM Integration.[ETL Cutoffs]\nORDER BY GroupId",
+                                "queryTimeout": "02:00:00"
+                            },
+                            "dataset": {
+                                "referenceName": "TargetASA",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            },
+                            "firstRowOnly": false
+                        }
+                    },
+                    {
+                        "name": "Table List Iterator",
+                        "type": "ForEach",
+                        "dependsOn": [
+                            {
+                                "activity": "Get Groups",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "items": {
+                                "value": "@activity('Get Groups').output.value",
+                                "type": "Expression"
+                            },
+                            "isSequential": true,
+                            "activities": [
+                                {
+                                    "name": "Execute pl_TableControl",
+                                    "type": "ExecutePipeline",
+                                    "dependsOn": [],
+                                    "userProperties": [],
+                                    "typeProperties": {
+                                        "pipeline": {
+                                            "referenceName": "pl_TableControl",
+                                            "type": "PipelineReference"
+                                        },
+                                        "waitOnCompletion": true,
+                                        "parameters": {
+                                            "GroupNumber": {
+                                                "value": "@item().GroupId",
+                                                "type": "Expression"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "variables": {
+                    "testid": {
+                        "type": "String"
+                    }
+                },
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/TargetASA')]",
+                "[concat(variables('factoryId'), '/pipelines/pl_TableControl')]"
+            ]
+        }
+    ]
+}
