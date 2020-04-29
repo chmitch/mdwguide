@@ -1,33 +1,43 @@
-# 	Lab 5 Tuning Analytics and migrating content to Premium
+# 	Challenge 5 - Power BI Reports and Model
 
-## Goal
-Key Modules
-1. Create tabular model in Power BI Desktop in DirectQuery mode
-2. Click on specific reports/dashboards to see query response times 
-3. Record baseline results with results Cache off and rerun them with results cache on
-4. Take one query from Query monitor window and copy it to SSMS. Tag query to monitor it 
-5. Run it with and without result cache off/on
-6. Setup workload management to run ETL and Reports in parallel to see perf impact
-7. Tune model and report with Composite model and performance analyzer
+## Prerequisites
+
+1. [Challenges 1 to 4] -- (./Coach/Lab4 final) should be done successfully.
+
+## Introductions
+
+World Wide Importers wants to build out analytics reports on their data in Synapse.
+
+## Success Criteria
+1. Build out a tabular model and reports in Power BI Desktop
+1. Analyze the data and tune the environment to optimize queries
+1. Import Power BI Data set into SSDT for DevOps pipeline
 
 ## Dataset
 Samples reports in https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/power-bi-dashboards
 
+## Basic Hackflow
+1. Open Power BI Desktop and connect your report to Azure Synapse in Direct Query Mode
+1. Add Order, Sales and Transaction Fact tables to model and corresponding dimension tables.  Create relationship between tables
+1. Create reports in Power BI Desktop
+1. Click on specific reports/dashboards to see query response times and record baseline
+1. Take longest duration query from Query monitor window and copy it to SSMS. Turn result cache on and off to see difference in response times
+1. Setup Tabular model in SSDT for DevOps workflows with XMLA endpoint
+1. Tune model and report with Composite model and performance analyzer
+1. Setup workload management to run ETL and Reports in parallel to see perf impact
 
-## Knowledgebase
-https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/performance-tuning-result-set-caching
-https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview#statistics
-https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices#maintain-statistics
-https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-label?view=azure-sqldw-latest
-https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation?view=azure-sqldw-latest
-https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity?view=azure-sqldw-latest
-https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-troubleshoot?view=azure-sqldw-latest
 
 
-SELECT name, is_auto_create_stats_on FROM sys.databases
+## Hints
+TBD
 
-SELECT name, is_result_set_caching_on
-FROM sys.databases;
+## Learning resources
 
-ALTER DATABASE [dbname]
-SET RESULT_SET_CACHING ON;
+|                                            |                                                                                                                                                       |
+| ------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------: |
+| **Description**                            |                                                                       **Links**                                                                       |
+| Tune with result set cache | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/performance-tuning-result-set-caching> |
+| Table Design in Synapse    | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview>                                |
+| Best practices for Synapse | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices> |
+| Monitor resource utilization  | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity?view=azure-sqldw-latest> |
+| Workload Isolation  | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation?view=azure-sqldw-latest> |
