@@ -32,11 +32,11 @@ WWI leadership team wants to leverage Power BI modeling capability to create ana
 
 
 ## Hints
-Use SQL Credential When Connecting to the Azure Synapse Analytics Data Warehouse
-Start the ASA service before connecting
-Create direct query mode data model first because you can convert direct query mode to imported mode but not vice versa 
-Use Power BI Perforamance Analyzer to check power bi query time and performance
-Samples reports in https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/power-bi-dashboards
+1. Use SQL Credential When Connecting to the Azure Synapse Analytics Data Warehouse
+2. Start the ASA service before connecting
+3. Create direct query mode data model first because you can convert direct query mode to imported mode but not vice versa 
+4. Use Power BI Perforamance Analyzer to check power bi query time and performance
+5. [Samples reports](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/power-bi-dashboards)
 
 ## Learning resources
 
