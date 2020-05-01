@@ -14,7 +14,7 @@ WWI leadership team wants to leverage Power BI modeling capability to create ana
 2. Compare the performance difference between Direct Query Mode and Imported Mode 
 3. Tune the environment by leveraging Power BI Composite Mode, ASA Adaptive Cache and ASA Meterialized view
 4. Analyze the data and tune the environment to optimize queries
-5. Understand the importance of workload isolation in Azure Synapse Analytics
+5. Understand the importance of workload isolation in Azure Synapse Analytics and its impact on the downstream reporting workload
 
 ## Dataset
 
@@ -32,8 +32,8 @@ WWI leadership team wants to leverage Power BI modeling capability to create ana
 
 
 ## Hints
-1. Use SQL Credential When Connecting to the Azure Synapse Analytics Data Warehouse
-2. Start the ASA service before connecting
+1. Use SQL Credential when connecting to the Azure Synapse Analytics database
+2. Make sure the ASA service is running in Azure Portal because it might auto paused based on your settings
 3. Create direct query mode data model first because you can convert direct query mode to imported mode but not vice versa 
 4. Use Power BI Perforamance Analyzer to check power bi query time and performance
 5. [Samples reports](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/power-bi-dashboards)
