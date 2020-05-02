@@ -40,14 +40,13 @@ In this hack, data engineers will learn how to migrate their platform to the clo
 - Download WorldWide Importers Database (OLTP & OLAP)
 
 ## Repository Contents (Optional)
-- `../Coach/Guides`
-  - Coach's Guide and related files
+- `../Host/Guides`
+  - Coach's Guide for challenge
+  - Related files for challenge
 - `../Student`
   - Student's Challenge Guide
 - `../images`
   - Generic image files needed
-- `../Student/Guides`
-  - Student's Challenge Guide
 
 ## Learning Path for Modern Data Warehouse
 
