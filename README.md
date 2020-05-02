@@ -1,49 +1,61 @@
-# Modern Data Warehouse Hack
-Modern Data Warehouse Hack
+# This Old [Title]House  {“Title”: {“Data Ware”, “Data Lake”, “…..”}}
+Modern Data Warehouse What the Hack
+
+## Introduction
+Modern Data Warehouse is a key upgrade motion for organizations to scale out their on-premise analytical workloads to the cloud.  This hack will help data engineers and administrators upgrade their skills to migrate to Azure Synapse Analytics. The hack will be the sequential migration steps required to migrate from on-premise to Synapse Analytics and re-platform attached workloads like ETL and reporting.
+
+## Learning Objectives
+In this hack, data engineers will learn how to migrate their platform to the cloud (data, schema and code).  Additionally, they need to build out Data Warehouse architectures that can scale for large data volumes, different data structures and real-time ingestions.  Azure Synapse Analytics provides all these capabilities as an integrated platform and we'll help you better understand how to refactor your existing data warehouse to Azure.  
+1. Modern Data Warehouse Architecture
+1. Azure Synapse Decision Tree
+1. Refactor T-SQL code to be compatible with Synapse
+1. ETL/ELT design patterns and how to build them with ADF + ADLS
+1. Setup a streaming data pipeline with HDInsight Kafka
+1. Tune Synapse for analytical workloads and design report for best performance
 
 ## Challenges
-Here is the set of challenges we plan to cover when building out our Modern Data Warehouse.  There will be six challenges that are the typical workloads in a MDW architecture.  The challenge will focus on migration activity from an existing SQL data platform to Azure Synapse Analytics.
- 
-	
-	1. Data Warehouse Migration – Migrate EDW from SQL Server to Azure Synapse Analytics.  Lift & Shift ETL code to SSIS Runtime
 
-	2. Data Lake integration - Build out Staging tier in Azure Data Lake.  Architect Lake for staging, cleansed and presentation tiers with POSIX setup
+1. Data Warehouse Migration
+   - Migrate EDW from SQL Server to Azure Synapse Analytics.  Lift & Shift ETL code to SSIS Runtime
+1. Data Lake integration 
+   - Build out Staging tier in Azure Data Lake.  Architect Lake for staging, cleansed and presentation tiers with POSIX setup
+1. Data pipeline Migration 
+   - Rewrite SSIS jobs from ETL data flow  to ADF as a ELT data flow.
+1. Realtime Data pipelines 
+   - Real-time data with Kafka and Databricks
+1. Analytics migration  
+   - Migrate reporting into Azure
 
-	3. Data pipeline Migration – Rewrite SSIS jobs from ETL data flow  to ADF as a ELT data flow.
+## Technologies
+1. Azure Synapse Analytics
+2. Azure Data Factory
+3. Azure HDInsight Kafka Cluster
+4. Azure Databricks
+5. Power BI
 
-	4. Realtime Data pipelines – Real-time data with Kafka and Databricks
-	
-	5. Analytics migration  – Migrate reporting into Azure
+## Prerequisites
+- Your own Azure subscription with Owner access
+- Visual Studio Code
+- Azure CLI
+- Download WorldWide Importers Database (OLTP & OLAP)
 
-	6. Mission Critical app -- Build out reference architecture for security, BCDR, & DevOps
- 
-## Objective
-These challenges will help educate the community on Level 100/300 items related to MDW.  The goal will be to build out an overall reference architecture, hands-on labs, load patterns and data flow diagram to help developers get started.
-
-## DataSet 
-For us to get started, we’ve identified the Worldwide Importers as our OLTP and DW data sets.  For each use case, we will integrate this data into the WWI data set.  Here are the other data sets for each track.
-
-
-	1. Structured WWI -- https://docs.microsoft.com/en-us/sql/samples/wide-world-importers-what-is?view=sql-server-2017
-	
-	2. Data Lake Integration -- Exported BCP files from lab one will be staged in Data Lake
-	
-	3. Data Pipeline Migration --  DailyETL.ispac files from WWI sample database
-	
-	4. Realtime Data pipeline -- Data generator to replicate web logs for sales data (TBD)
-	
-	5. Analytics Migration -- Reuse reports data in WWI Sample database
-
-	6. Mission critical app -- Whiteboard session to build out reference architecture
-			
-Our goal is to have an end-to-end story that covers all Azure Data Services and explains common patterns so they can learn how to build it themselves.
+## Repository Contents (Optional)
+- `../Coach/Guides`
+  - Coach's Guide and related files
+- `../Student`
+  - Student's Challenge Guide
+- `../images`
+  - Generic image files needed
+- `../Student/Guides`
+  - Student's Challenge Guide
 
 ## Learning Path for Modern Data Warehouse
 
-[Modern Data Warehouse](https://github.com/bhitney/Learning-Plans/wiki/Data-&-AI-Modern-Data-Warehouse)
+- [Modern Data Warehouse](https://github.com/bhitney/Learning-Plans/wiki/Data-&-AI-Modern-Data-Warehouse)
 
-* Modern Data Warehouse Learning Path to help upskill Data Engineers to build out MDW platforms
 
-* Good reference material to learn key concepts and hands-on labs to get practical experience
-
-* Different labs, github project and What the Hack can be reusable code if required
+## Contributors
+- Alex Karasek
+- Jason Virtue
+- Annie Xu
+- Chris Mitchell
