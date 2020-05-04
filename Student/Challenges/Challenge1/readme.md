@@ -38,6 +38,11 @@ There will be four different object types we'll migrate:
     - Run end-to-end load in Synapse
     - Compare run counts against OLAP database
 
+## Current State Architecture
+![The Solution diagram is described in the text following this diagram.](/images/current_arch.png)
+
+## Final State Architecture
+![The Solution diagram is described in the text following this diagram.](/images/Challenge1.png)
 
 ## Learning Resources
 
