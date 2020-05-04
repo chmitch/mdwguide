@@ -50,7 +50,7 @@ In this hack, data engineers will learn how to migrate their platform to the clo
 
 ## Learning Path for Modern Data Warehouse
 
-- [Modern Data Warehouse](https://github.com/bhitney/Learning-Plans/wiki/Data-&-AI-Modern-Data-Warehouse)
+- [Modern Data Warehouse](https://github.com/bhitney/Learning-Plans/wiki/Modern-Data-Warehouse)
 
 
 ## Contributors
