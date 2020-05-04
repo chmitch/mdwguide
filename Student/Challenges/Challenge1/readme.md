@@ -39,7 +39,7 @@ There will be four different object types we'll migrate:
     - Compare run counts against OLAP database
 
 ## Current State Architecture
-![The Solution diagram is described in the text following this diagram.](/images/current_arch.png)
+![The Solution diagram is described in the text following this diagram.](/images/current.png)
 
 ## Final State Architecture
 ![The Solution diagram is described in the text following this diagram.](/images/Challenge1.png)
