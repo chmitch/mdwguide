@@ -12,7 +12,7 @@ The solution will require us to migrate the on-premise data warehouse to Azure S
 
 Below is a diagram of the solution architecture you will build in this hack. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
 
-![The Solution diagram is described in the text following this diagram.](images/solution_arch.png)
+![The Solution diagram is described in the text following this diagram.](/images/solution_arch.png)
 
 
 ## Technologies
@@ -31,8 +31,8 @@ Modern Data Warehouse
 ## Challenges
 0.	[Setup](./Challenges/Challenge0/readme.md)
 1.  [Data Warehouse Migration](./Challenges/Challenge1/readme.md)
-2.  [Data Lake Integration](./Challenges/Challenge2/readme.md)
-3.  [Data Pipeline Migration](./Challenges/Challenge3/readme.md)
+2.  [Data Lake Integration](./Challenges/Challenge2/README.md)
+3.  [Data Pipeline Migration](./Challenges/Challenge3/README.md)
 4.  [Real-time Data pipeline](./Challenges/Challenge4/readme.md)
 5.  [Analytics migration](./Challenges/Challenge5/readme.md)
 
