@@ -1,6 +1,6 @@
 # Overview
 
-This workshop is intended to give Data Engineers a level 400 understanding of the Modern Data Warehouse architecture and development skills to build it with Azure Synapse Analytics.  It is intended to give organizations the skills to migrate their SQL Server on-premise workloads to Azure Synapse analytics.  Likewise, the workshop will provide the skills and best practices to integrate a Data Lake onto the existing data warehouse platform.  This will require the existing ETL (SSIS package) be refactored into Azure Data Factory pipelines.  Additionally, Modern Data Warehouse platforms are starting to integrate real-time data pipelines to stream clickstream data into the data lake and view it with Azrue Databricks.  Lastly, the students will be able to build out a Power BI Data model and tune it and the Synapse platform for optmial performance.  This will showcase Synapse Analytics performance with Dashboards.
+This workshop is intended to give Data Engineers a level 400 understanding of the Modern Data Warehouse architecture and development skills to build it with Azure Synapse Analytics.  It is intended to give organizations the skills to migrate their SQL Server on-premise workloads to Azure Synapse analytics.  Likewise, the workshop will provide the skills and best practices to integrate a Data Lake into the existing data warehouse platform.  This will require the existing ETL (SSIS package) be refactored into Azure Data Factory pipelines.  Additionally, Modern Data Warehouse platforms are starting to integrate real-time data pipelines to stream clickstream data into the data lake and view it with Azrue Databricks.  Lastly, the students will be able to build out a Power BI Data model and tune it and the Synapse platform for optmial performance.  This will showcase Synapse Analytics performance with Dashboards.
 
 The format we're following for this is similar to other initiatives like OpenHack and What the Hack. The material is intended to be light on presentations and heavy on hands on experience. The participants will spend the majority of their time working on challenges. The challenges are not designed to be hands on labs, but rather a business problem with success criteria. The focus here is encouraging the participants to think about what they're doing and not just blindly following steps in a lab.
 
@@ -28,6 +28,13 @@ The "Hackflow Steps" are included with each Challenge not to provide solutions t
 
 In order to deliver this hackshop there is a variety of supporting content.   This content is indexed below.
 
+## Challenges
+1.  [Data Warehouse Migration](./Guide/Challenge1/readme.md)
+2.  [Data Lake Integration](./Guide/Challenge2/readme.md)
+3.  [Data Pipeline Migration](./Guide/Challenge3/readme.md)
+4.  [Real-time Data pipeline](./Guide/Challenge4/readme.md)
+5.  [Analytics migration](./Guide/Challenge5/readme.md)
+
 ### Backup
 
 * TBD
@@ -38,7 +45,12 @@ In order to deliver this hackshop there is a variety of supporting content.   Th
 
 ### Scripts
 
-TBD
+1.  [Data Warehouse Migration](./Solutions/Challenge1/readme.md)
+2.  [Data Lake Integration](./Solutions/Challenge2/readme.md)
+3.  [Data Pipeline Migration](./Solutions/Challenge3/readme.md)
+4.  [Real-time Data pipeline](./Solutions/Challenge4/readme.md)
+5.  [Analytics migration](./Solutions/Challenge5/readme.md)
+
 
 ### Database Setup
 
