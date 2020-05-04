@@ -1,4 +1,4 @@
-# Challenge \1 - \Data Warehouse migration from On-premise to Azure Synapse Analytics
+# Challenge 1 - \Data Warehouse migration from On-premise to Azure Synapse Analytics
 
 [< Previous Challenge](./ChallengeX-1.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](./ChallengeX+1.md)
 
@@ -24,7 +24,7 @@ There will be four different object types we'll migrate:
 ## Success Criteria
 1. Migrated all schemas to Synapse
 2. Created one table per schema in Synapse
-    - Coach will provide remaining DLL scripts
+    - Coach will provide remaining DDL scripts
 3. Refactor one Stored Procedure per design pattern
     - Dimension Tables
     - Fact Table (Insert Only)
