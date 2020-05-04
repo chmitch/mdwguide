@@ -43,9 +43,9 @@ In order to deliver this hackshop there is a variety of supporting content.   Th
 
 1. TBD
 
-### Scripts
+### Solution Scripts
 
-1.  [Data Warehouse Migration](./Solutions/Challenge1/readme.md)
+1.  [Data Warehouse Migration](./Solutions/Challenge1)
 2.  [Data Lake Integration](./Solutions/Challenge2/readme.md)
 3.  [Data Pipeline Migration](./Solutions/Challenge3/readme.md)
 4.  [Real-time Data pipeline](./Solutions/Challenge4/readme.md)
