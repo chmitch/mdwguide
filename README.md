@@ -1,4 +1,4 @@
-# This Old [Title]House  {“Title”: {“Data Ware”, “Data Lake”, “…..”}}
+# This Old [Title]House  {“Title”: [“Data Ware”, “Data Lake”, “…..”]}
 Modern Data Warehouse What the Hack
 
 ## Introduction
