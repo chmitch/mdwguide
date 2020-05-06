@@ -1,8 +1,8 @@
 # Challenge 1 - \Data Warehouse migration from On-premise to Azure Synapse Analytics
 
-[< Previous Challenge](./ChallengeX-1.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](./ChallengeX+1.md)
+[< Previous Challenge](/Student/Challenges/Challenge0/readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Student/Challenges/Challenge2/README.md)
 
-## Introduction (Optional)
+## Introduction
 
 WWI wants to modernize their data warehouse in phases.  The first stage will be to scale-out horizontally their existing data warehouse (SQL Server OLAP) to Azure Synapse Analytics.
 They like to reuse their existing ETL code and leave their source systems as-is (no migration).  This will require a Hybrid architecture for on-premise OLTP and Azrue Synapse.  This exercise will
@@ -50,20 +50,28 @@ There will be four different object types we'll migrate:
 
 ### Database Schema Migration
 1. [Distributed Tables](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)
-1. [Distribution Keys](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview).  A list of unsupported data types can be found in this
-1. [Data Types](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types)  
+1. [Distribution Keys](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview) 
+1. [Distributiion Key Best Practices](https://techcommunity.microsoft.com/t5/datacat/choosing-hash-distributed-table-vs-round-robin-distributed-table/ba-p/305247)
+1. [Data Types](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types)  A list of unsupported data types at this link.
+1. [Table Constraints](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-table-constraints)
+1. [Unsupported Table Features](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview#unsupported-table-features)
 1. [Create Table Syntax](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view%253Daps-pdw-2016-au7=&view=aps-pdw-2016-au7)
 1. [Identity Column](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity)
 1.  [Data Migration Utility](https://www.sqlservercentral.com/articles/azure-dwh-part-11-data-warehouse-migration-utility)
     - Talk with coach for need of tool and trade-offs.
 
 ### Database code rewrite (T-SQL)
-1. [Coding Techniques in Synapse](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-develop)
+1. [Design Considerations when refactoring your code](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-develop)
+1. [Migrate T-SQL Code](https://github.com/uglide/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-migrate-code.md)
 1. [Common table Expression (WITH)](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15#features-and-limitations-of-common-table-expressions-in--and-)
+1. [Check your T-SQL for incompatibilies #3](https://www.blue-granite.com/blog/5-important-steps-when-migrating-to-your-scaled-out-data-warehouse)
+1. [SQL Differences in T-SQL](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-troubleshoot#differences-from-sql-database)
 
 ### Data Migration
-[Bulk Copy Program](https://docs.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=sql-server-ver15) 
-[Data Skew due to Distribution Key](https://github.com/rgl/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-manage-distributed-data-skew.md)
+1. [Bulk Copy Program](https://docs.microsoft.com/en-us/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 
+1. [BCP Instructions](https://github.com/uglide/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-load-with-bcp.md)
+1. [Data migration techniques](https://github.com/uglide/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-migrate-data.md)
+1. [Data Skew due to Distribution Key](https://github.com/rgl/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-manage-distributed-data-skew.md)
 
 ### SSIS Job
 1.  [Github repo](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac) 

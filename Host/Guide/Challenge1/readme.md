@@ -93,7 +93,9 @@ There are three patterns you can reuse across all scripts in the same family (Di
     2. Exec as and Return can be removed for this lab
     3. Fix Common table Expression (WITH) [Reference document](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15#features-and-limitations-of-common-table-expressions-in--and-)
 2. Rewrite Fact T-SQL -- Same applies for UPDATE Statement but DELETE statement will require modification due to join
-    1. Movement T-SQL is a special fact table that leverages a MERGE Statement.  Merge is not supported today in Azure Synapse.  You will need to split it out into an Update and Insert statement
+    1. Movement T-SQL is a special fact table that leverages a MERGE Statement.  Merge is not supported today in Azure Synapse.  You will need to split it out into an Update and Insert statement.  [Merge Workaround](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas#replace-merge-statements)
+    2. UPDATE statement will require explicit table name and not alias
+    3. [DELETE statement will require OPTION Label](https://docs.microsoft.com/en-us/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15#n-using-a-label-and-a-query-hint-with-the-delete-statement)
 3. Rewrite Load control tables
     1. PopulateDateDimensionForYear -- User Defined Functions are not supported in Azure Synapse
     2. GetLastETLCutoffTime -- @@RowCount not supported
@@ -103,7 +105,7 @@ There are three patterns you can reuse across all scripts in the same family (Di
 
 There are numerous strategies and tools to migrate your data from on-premise to Azure. [Reference document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading) 
 
-Due to the small size of this sample database, we will take the simplist strategy for this lab; [Bulk Copy Program](https://docs.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=sql-server-ver15) (BCP).  You will run BCP commands from the 
+Due to the small size of this sample database, we will take the simplist strategy for this lab; [Bulk Copy Program](https://docs.microsoft.com/en-us/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (BCP).  You will run BCP commands from the 
 SQL Server Virtual Machine that hosts the OLAP database.  BCP export will extract the data to a txt file on your local machine.  BCP import will be run from the same Virtual
 machine where the text files reside.  The user name and password will need to be updated to your Azure Synapse instance.
 
