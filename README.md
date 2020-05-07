@@ -42,11 +42,11 @@ In this hack, data engineers will learn how to migrate their platform to the clo
 ## Repository Contents (Optional)
 - `../Host/Guides`
   - Coach's Guide for challenge
-  - Related files for challenge
+  - Solution files for challenge
 - `../Student`
   - Student's Challenge Guide
 - `../images`
-  - Generic image files needed
+  - Generic image files
 
 ## Learning Path for Modern Data Warehouse
 

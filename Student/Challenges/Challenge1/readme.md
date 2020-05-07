@@ -1,11 +1,11 @@
-# Challenge 1 - \Data Warehouse migration from On-premise to Azure Synapse Analytics
+# Challenge 1 - Data Warehouse migration from On-premise to Azure Synapse Analytics
 
 [< Previous Challenge](/Student/Challenges/Challenge0/readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Student/Challenges/Challenge2/README.md)
 
 ## Introduction
 
 WWI wants to modernize their data warehouse in phases.  The first stage will be to scale-out horizontally their existing data warehouse (SQL Server OLAP) to Azure Synapse Analytics.
-They like to reuse their existing ETL code and leave their source systems as-is (no migration).  This will require a Hybrid architecture for on-premise OLTP and Azrue Synapse.  This exercise will
+They like to reuse their existing ETL code and leave their source systems as-is (no migration).  This will require a Hybrid architecture for on-premise OLTP and Azure Synapse.  This exercise will
 be showcasing how to migrate your traditional SQL Server (SMP) to Azure Synapse Analytics (MPP).
 
 
@@ -88,7 +88,7 @@ SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_def
 	WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','sql_variant','timestamp','xml')
 	AND  y.[is_user_defined] = 1;
 ```
-1. Review the SSIS jobs that are at this [Github repo](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac)  This job leverages
+4. Review the SSIS jobs that are at this [Github repo](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac)  This job leverages
 stored procedures in the Source and Target databases extensively.  This will require a refactoring of the Stored procedures for the OLAP database when you repoint the ETL
 target to Azure Synapse.
 
