@@ -9,10 +9,19 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
 ## Success Criteria
 
 1. Deploy a new storage account resource.
-2. Define directory structure to support data lake use cases.
-3. Configure folder level security in your new data lake storage
+2. Define directory structure to support data lake use cases including:
+    - There should be at least 2 parent directories created: 
+        - '\In' (or Staging Data) - This will the sink location used as the landing zone for data being copied into your data lake.
+        - '\Out' (or processed data) - This will be the location published to downstream systems that might consume the data once it has been processed.
+    - Within each of these folders, you should consider creating a separate folder for each of the tables being loaded into your DW.
+3. Configure folder level security in your new data lake storage 
+    - only your ETL job should be able to write to your \IN directory
+    - you should be able to grant individual access to users who may want to access your \Out directory based on AAD credentials
 4. Deploy Azure Data Factory 
 5. Create a pipeline to copy data into ADLS
+    - Your pipeline should contain at least one copy activity that copies data from a source table in the WideWorldImporters OLTP database into a file in your new data lake
+        - Your data source should leverage the [Integration].[Get[[TableName]]Updates] stored procedures that already exist in the source
+        - You should parameterize the source and sink properties in your pipeline where possible so that you can re-use the same pipeline for all additional tables being copied
 
 ## Hints
 
@@ -20,10 +29,8 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
     - What types of data will you need to be able to support?
     - What types of processes will you need to be able to support?
     - How will you secure access to directories?
-2. There are other tools that could be used to migrate data from local storage into Azure (such as [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) or [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10), but Azure data factory is recommended for this challenge because it will be used again in future challenges.
-3. Try to make package execution dynamic and resuable where possible
-
-
+2. In addition to using the azure portal directly, you can view and manage your new storage account using the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) 
+3. In order to avoid re-loading the tables in their entirety every time our job runs, we are following an "incremental load" pattern.  Think about how you may be able to find and use start and end date parameters for each table
 
 
 ## Learning Resources
@@ -33,6 +40,8 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
 2. [Data Lake Storage Best Practices](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-best-practices)
 
 3. [Azure Data Factory Copy Activity](https://docs.microsoft.com/en-us/azure/data-factory/copy-activity-overview)
+
+4. [Azure Data Factory Incremental Load Pattern](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-incremental-copy-overview)
 
 ## Additional Challenges
 
