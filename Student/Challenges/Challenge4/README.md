@@ -1,6 +1,6 @@
 # Challenge 4 - Streaming data 
 
-[< Previous Challenge](/Student/Challenges/Challenge3/readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Student/Challenges/Challenge5/README.md)
+[< Previous Challenge](/Student/Challenges/Challenge3/README.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Student/Challenges/Challenge5/README.md)
 
 ## Introduction
 

@@ -14,15 +14,11 @@ The following is expected timing for a standard delivery.
 | Presentation 0:  Welcome and Introduction  | 30 mins |
 | Challenge 0: Environment Setup | 30 mins|
 | Presentation 1: Intro to Modern Data Warehouse | 30 mins|
-| Challenge 1: Data Warehouse Migration | 120 mins |
-| Challenge 2: Data Lake Integration | 90 mins |
-| Challenge 3: Data pipeline Migration | 180 mins |
+| Challenge 1: Data Warehouse Migration | 240 mins |
+| Challenge 2: Data Lake Integration | 120 mins |
+| Challenge 3: Data pipeline Migration | 240 mins |
 | Challenge 4: Realtime Data Pipelines | 120 mins |
-| Challenge 5: Analytics Migration | 90 mins |
-
-## Hackflow Steps 
-
-The "Hackflow Steps" are included with each Challenge not to provide solutions to or guidance on how to complete a workshop rather streamline the delivery to prevent extended design discussions.  There are multiple ways to complete these challenges and for expendency we outline the steps to complete.  This WTH is complex since we are learning a number of different technologies and discovering how to refactor the platform for Azure.  There are lots of concepts to learn so we don't want to slow teams down by debating what is the optimal design.  We have added "Additional Challenges" for those experts who have been there and done that.  Hopefully, they will find this as rewarding as data engineers who are building their skills sets for Modern Data Warehouses.
+| Challenge 5: Analytics Migration | 120 mins |
 
 ## Content
 
@@ -35,14 +31,6 @@ In order to deliver this hackshop there is a variety of supporting content.   Th
 4.  [Real-time Data pipeline](./Guide/Challenge4/README.md)
 5.  [Analytics migration](./Guide/Challenge5/readme.md)
 
-### Backup
-
-* TBD
-
-### Presentation content
-
-1. TBD
-
 ### Solution Scripts
 
 1.  [Data Warehouse Migration](./Solutions/Challenge1)
@@ -51,10 +39,6 @@ In order to deliver this hackshop there is a variety of supporting content.   Th
 4.  [Real-time Data pipeline](./Solutions/Challenge4)
 5.  [Analytics migration](./Solutions/Challenge5/readme.md)
 
-
-### Database Setup
-
-TBD
 
 ### Ideas for other Challenges (Punch List)
 

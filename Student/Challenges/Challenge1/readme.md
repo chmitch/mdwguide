@@ -38,7 +38,7 @@ There will be four different object types we'll migrate:
     - Run end-to-end load in Synapse
     - Compare run counts against OLAP database
 
-## Final State Architecture
+## Stage 1 Architecture
 ![The Solution diagram is described in the text following this diagram.](/images/Challenge1.png)
 
 ## Learning Resources
@@ -51,7 +51,7 @@ There will be four different object types we'll migrate:
 ### Database Schema Migration
 1. [Distributed Tables](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)
 1. [Distribution Keys](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview) 
-1. [Distributiion Key Best Practices](https://techcommunity.microsoft.com/t5/datacat/choosing-hash-distributed-table-vs-round-robin-distributed-table/ba-p/305247)
+1. [Distribution Key Best Practices](https://techcommunity.microsoft.com/t5/datacat/choosing-hash-distributed-table-vs-round-robin-distributed-table/ba-p/305247)
 1. [Data Types](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types)  A list of unsupported data types at this link.
 1. [Table Constraints](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-table-constraints)
 1. [Unsupported Table Features](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview#unsupported-table-features)
