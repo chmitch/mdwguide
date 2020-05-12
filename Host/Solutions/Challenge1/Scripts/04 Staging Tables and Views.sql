@@ -6,7 +6,7 @@ GO
 CREATE SCHEMA [sysdiag]
 GO
 
-/****** Object:  Table [Integration].[City_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[City_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -29,11 +29,11 @@ CREATE TABLE [Integration].[City_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
-/****** Object:  Table [Integration].[Customer_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[Customer_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -54,11 +54,11 @@ CREATE TABLE [Integration].[Customer_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
-/****** Object:  Table [Integration].[Employee_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[Employee_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -77,7 +77,7 @@ CREATE TABLE [Integration].[Employee_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
@@ -135,7 +135,7 @@ WITH
 )
 GO
 
-/****** Object:  Table [Integration].[Movement_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[Movement_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,11 +161,11 @@ CREATE TABLE [Integration].[Movement_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
-/****** Object:  Table [Integration].[Order_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[Order_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -201,11 +201,11 @@ CREATE TABLE [Integration].[Order_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
-/****** Object:  Table [Integration].[PaymentMethod_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[PaymentMethod_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -221,12 +221,12 @@ CREATE TABLE [Integration].[PaymentMethod_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
 
-/****** Object:  Table [Integration].[Purchase_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[Purchase_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -255,7 +255,7 @@ WITH
 GO
 
 
-/****** Object:  Table [Integration].[Sale_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[Sale_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -292,11 +292,11 @@ CREATE TABLE [Integration].[Sale_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
-/****** Object:  Table [Integration].[StockHolding_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[StockHolding_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -316,11 +316,11 @@ CREATE TABLE [Integration].[StockHolding_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
-/****** Object:  Table [Integration].[StockItem_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[StockItem_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -350,12 +350,12 @@ CREATE TABLE [Integration].[StockItem_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
 
-/****** Object:  Table [Integration].[Supplier_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[Supplier_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -376,11 +376,11 @@ CREATE TABLE [Integration].[Supplier_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
-/****** Object:  Table [Integration].[Transaction_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[Transaction_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -414,11 +414,11 @@ CREATE TABLE [Integration].[Transaction_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
-/****** Object:  Table [Integration].[TransactionType_Staging]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Integration].[TransactionType_Staging]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -434,7 +434,7 @@ CREATE TABLE [Integration].[TransactionType_Staging]
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
