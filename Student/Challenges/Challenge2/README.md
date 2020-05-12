@@ -10,7 +10,7 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
 
 1. Deploy a new storage account resource.
 2. Define directory structure to support data lake use cases including:
-    - There should be at least 2 parent directories created: 
+    - 2 parent directories created: 
         - '\In' (or Staging Data) - This will the sink location used as the landing zone for data being copied into your data lake.
         - '\Out' (or processed data) - This will be the location published to downstream systems that might consume the data once it has been processed.
     - Within each of these folders, you should consider creating a separate folder for each of the tables being loaded into your DW.
