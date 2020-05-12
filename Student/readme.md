@@ -33,7 +33,7 @@ Modern Data Warehouse
 1.  [Data Warehouse Migration](./Challenges/Challenge1/readme.md)
 2.  [Data Lake Integration](./Challenges/Challenge2/README.md)
 3.  [Data Pipeline Migration](./Challenges/Challenge3/README.md)
-4.  [Real-time Data pipeline](./Challenges/Challenge4/readme.md)
+4.  [Real-time Data pipeline](./Challenges/Challenge4/README.md)
 5.  [Analytics migration](./Challenges/Challenge5/readme.md)
 
 
