@@ -1,4 +1,6 @@
-# 	Challenge 2: Data Lake integration
+# 	Challenge 2 -- Data Lake integration
+
+[< Previous Challenge](/Host/Guide/Challenge1/readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Host/Guide/Challenge3/Readme.md)
 
 ## Introduction
 
@@ -44,5 +46,7 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
                 - iterate over list of tables
                 - Execute Pipeline task to execute pipeline create above (Note: you will need to pass in table name as parameter)
 
+## SOLUTIONS
+[Go to Solution](/Host/Solutions/Challenge2)
 
 

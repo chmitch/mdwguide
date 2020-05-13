@@ -1,13 +1,25 @@
-# 	Lab 4 Streaming data 
+# 	Challenge 4 --  Real-time Data Pipelines
 
-## Goal
+[< Previous Challenge](/Host/Guide/Challenge3/Readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Host/Guide/Challenge5/README.md)
+
+## Story
+Worldwide importers wanted to build out their data warehouse to include clickstream data.  There are a number of online stores that the marketing department wants to track for campaign and online ads.  These marketing users want to monitor the clickstream data and have the ability to run exploratory data analysis to support ad-hoc research.  This data needs to be real-time so the campaigns and ads are timely based on user activity in the online stores.
+
+## Tools
+1. Visual Studio 2019 for Visual Studio VM (Streaming Data Source)
+1. Azure Databricks Workspace
+1. Kafka HDInsight Cluster (Preferred over Event Hubs)
+1. Solutions contains the Azure Databricks notebook which should be shared with students.  We don't expect them to setup this notebook ahead of time.
+
+## Real-time Streaming Overview
 Build a streaming pipeline using Kafka on HDInsight to ingest simulated click stream data into enterprise Delta Lake via Azure Databricks.
 
 ## Dataset
-Data Source: 
-In order to generate the source data stream for this exercise, you will need to execute sample .Net application (see code below).  This code will randomly generate product related data, and write it to a Kafka topic.
 
-Data Sink:
+### Data Source
+In order to generate the source data stream for this exercise, you will need to execute sample .Net application (Step 3).  This code will randomly generate product related data, and write it to a Kafka topic.
+
+### Data Sink 
 Azure Databricks will be used to consume Kafka topic, and write streaming data to Delta Lake tables stored in Azure Data Lake.
 
 ## Step by Step Guidance
@@ -38,5 +50,8 @@ Once all items above have been deployed and configured, you can log into your ne
 **Step 8 - Ingest data stream**
 Execute the Databricks notebook configured above to create streaming dataset, and start writing data to Delta Lake.  Once this notebook is running, you can begin to interactively query Delta Lake tables and streaming Data Frame.
 
-##Note: Once this exercise is complete, do not forgot to stop and delete all services created in this step to avoid ongoing charges to your Azure subscription.
+## Query the Data
+Have the team reuse the queries in the Databricks notebook and create an aggregate query to show their SQL, Scala or Python skills.  This is a standalone table and doesn't directly integrate into Azure Synapse Analytics.  
 
+## SOLUTIONS
+[Go to Solution](/Host/Solutions/Challenge4)

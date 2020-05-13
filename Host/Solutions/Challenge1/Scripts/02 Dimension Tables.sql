@@ -3,7 +3,7 @@ CREATE SCHEMA [Dimension]
 GO
 
 
-/****** Object:  Table [Dimension].[City]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Dimension].[City]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -26,12 +26,15 @@ CREATE TABLE [Dimension].[City]
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = REPLICATE,
+	CLUSTERED INDEX
+	(
+		[City Key] ASC
+	)
 )
 GO
 
-/****** Object:  Table [Dimension].[Customer]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Dimension].[Customer]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -52,13 +55,16 @@ CREATE TABLE [Dimension].[Customer]
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = REPLICATE,
+	CLUSTERED INDEX
+	(
+		[Customer Key] ASC
+	)
 )
 GO
 
 
-/****** Object:  Table [Dimension].[Date]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Dimension].[Date]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -82,12 +88,15 @@ CREATE TABLE [Dimension].[Date]
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = REPLICATE,
+	CLUSTERED INDEX
+	(
+		[Date] ASC
+	)
 )
 GO
 
-/****** Object:  Table [Dimension].[Employee]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Dimension].[Employee]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -106,13 +115,16 @@ CREATE TABLE [Dimension].[Employee]
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = REPLICATE,
+	CLUSTERED INDEX
+	(
+		[Employee Key] ASC
+	)
 )
 GO
 
 
-/****** Object:  Table [Dimension].[Payment Method]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Dimension].[Payment Method]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -128,13 +140,15 @@ CREATE TABLE [Dimension].[Payment Method]
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = REPLICATE,
+	CLUSTERED INDEX
+	(
+		[Payment Method Key] ASC
+	)
 )
 GO
 
-
-/****** Object:  Table [Dimension].[Stock Item]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Dimension].[Stock Item]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -164,12 +178,15 @@ CREATE TABLE [Dimension].[Stock Item]
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = REPLICATE,
+	CLUSTERED INDEX
+	(
+		[Stock Item Key] ASC
+	)
 )
 GO
 
-/****** Object:  Table [Dimension].[Supplier]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Dimension].[Supplier]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,12 +207,16 @@ CREATE TABLE [Dimension].[Supplier]
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = REPLICATE,
+	CLUSTERED INDEX
+	(
+		[Supplier Key] ASC
+	)
 )
 GO
 
-/****** Object:  Table [Dimension].[Transaction Type]    Script Date: 4/9/2020 9:00:54 AM ******/
+
+/****** Object:  Table [Dimension].[Transaction Type]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -211,7 +232,10 @@ CREATE TABLE [Dimension].[Transaction Type]
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = REPLICATE,
+	CLUSTERED INDEX
+	(
+		[Transaction Type Key] ASC
+	)
 )
 GO

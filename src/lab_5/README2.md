@@ -40,6 +40,8 @@ The objective of this lab is to build out a tabular model and Power BI reports. 
 | Best practices for Synapse | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices> |
 | Monitor resource utilization  | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity?view=azure-sqldw-latest> |
 | Workload Isolation  | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation?view=azure-sqldw-latest> |
+| Performance Tuning | https://medium.com/@ian.shchoy/azure-sql-data-warehouse-deep-dive-into-data-distribution-f4cf8f1e340a |
+
 
 ## Tips
 1. Use SQL Credential when connecting to the Azure Synapse Analytics database
@@ -50,6 +52,8 @@ The objective of this lab is to build out a tabular model and Power BI reports. 
 
 
 ## Additional Challenges
+1. [Add Indexes and Partitions to your table structures](https://docs.microsoft.com/en-us/sql/relational-databases/indexes/columnstore-indexes-design-guidance?view=sql-server-ver15)
+1. [Ordered vs. Nonordered CCI](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/performance-tuning-ordered-cci)
 1. Setup workload management to run ETL and run Reports in parallel to see performance impact
 1. Setup Power BI Embed application "App Owns Data" for users to access data
 1. Setup RLS in Power BI Embed and Azure Synapse Analytics
