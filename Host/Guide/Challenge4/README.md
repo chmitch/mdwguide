@@ -15,10 +15,11 @@ Worldwide importers wanted to build out their data warehouse to include clickstr
 Build a streaming pipeline using Kafka on HDInsight to ingest simulated click stream data into enterprise Delta Lake via Azure Databricks.
 
 ## Dataset
-Data Source: 
+
+### Data Source
 In order to generate the source data stream for this exercise, you will need to execute sample .Net application (Step 3).  This code will randomly generate product related data, and write it to a Kafka topic.
 
-Data Sink:
+### Data Sink 
 Azure Databricks will be used to consume Kafka topic, and write streaming data to Delta Lake tables stored in Azure Data Lake.
 
 ## Step by Step Guidance

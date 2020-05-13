@@ -1,4 +1,4 @@
-# 	Challenge 2: Data Lake integration
+# 	Challenge 2 -- Data Lake integration
 
 [< Previous Challenge](/Host/Guide/Challenge1/readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Host/Guide/Challenge3/Readme.md)
 

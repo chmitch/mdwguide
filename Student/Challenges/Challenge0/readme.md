@@ -1,4 +1,4 @@
-# Challenge 0 - Setup
+# Challenge 0 -- Setup
 
 [Next Challenge>](/Student/Challenges/Challenge1/readme.md)
 

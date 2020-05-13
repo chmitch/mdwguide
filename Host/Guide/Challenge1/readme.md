@@ -51,7 +51,7 @@ Guidelines will be provided below but you will have to determine how best to mig
 end state to the one we've published into the "Host/Solutions/Challenge1" folder.  The detailed migration guide below is here for things to consider during your migration. Please follow this [outline](https://techcommunity.microsoft.com/t5/datacat/migrating-data-to-azure-sql-data-warehouse-in-practice/ba-p/305355) and cross-reference it
 for a comprehensive list of items to consider during a migraiton. 
 
-## Database Schema migration steps
+### Database Schema migration steps
 
 Database schemas need to be migrated from SQL Server to Azure Synapse.  Due to the MPP architecture, this will be more than just a data type translation exericse.  You will need to focus
 on how best to distribute the data across each table follow this [document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview).  A list of unsupported data types can be found in this [article](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) and how to find the best alternative. 
@@ -82,7 +82,7 @@ SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_def
 6. Review IDENTITY article to ensure surrogate keys are in the right sequence [Reference document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity)
     
 
-## Database code rewrite
+### Database code rewrite
 
 Review the SSIS jobs that are at this [Github repo](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac)  This job leverages
 stored procedures in the Source and Target databases extensively.  This will require a refactoring of the Stored procedures for the OLAP database when you repoint the ETL
@@ -103,7 +103,7 @@ There are three patterns you can reuse across all scripts in the same family (Di
     2. GetLastETLCutoffTime -- @@RowCount not supported
 4. Rewrite Function for Date Dimension Table
 
-## Data Migration
+### Data Migration
 
 There are numerous strategies and tools to migrate your data from on-premise to Azure. [Reference document](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading) 
 
@@ -117,7 +117,7 @@ machine where the text files reside.  The user name and password will need to be
 4. Create BCP Scripts to import the data in Azure Synapse Analytics.  Due to low data volume there is no need to first migrate them to Azure
 5. Review Data Skew of Distributed Tables to see if your distribution keys are accurate [Reference document](https://github.com/rgl/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-manage-distributed-data-skew.md)
 
-## SSIS Job 
+### SSIS Job 
 
 Data movement in first lab will be execution of Daily.ETL.ispac job in Azure Data Factory SSIS Runtime.  This lab will reuse data pipelines to minimize migration costs.
 As data volumes increase, these jobs will need to leverage a MPP platform like Databricks, Synapse, HDInsight to transform the data at scale.  This will be done in a future lab.
@@ -131,5 +131,5 @@ Setup your SSIS job following these instructions. [Reference document](https://d
 
 Congratulations!!! The migration is complete.  Run your SSIS jobs to load data from OLTP to OLAP data warehouse.  You might want to create a load control table to setup incremental loads.  This will validate you've completed all steps successfully.  Compare the results of the WWI OLAP database vs. the one you've migrated into Azure Synapse Analytics.
 
-## SOLUTIONS
+# SOLUTIONS
 [Go to Solution](/Host/Solutions/Challenge1)

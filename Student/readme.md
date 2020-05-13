@@ -19,14 +19,11 @@ Below is a diagram of the solution architecture you will build in this hack. Ple
 
 Azure services and related products
 * Azure Synapse Analytics
+* Azure Data Lake Storage Gen2 (ADLS)
 * Azure Data Factory
 * Azure HDInsight Kafka Cluster
 * Azure Databricks
 * Power BI
-
-## Azure solution
-Modern Data Warehouse
-
 
 ## Challenges
 0.	[Setup](./Challenges/Challenge0/readme.md)
