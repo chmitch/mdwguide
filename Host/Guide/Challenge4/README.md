@@ -1,6 +1,6 @@
 # 	Challenge 4 --  Real-time Data Pipelines
 
-[< Previous Challenge](/Host/Guide/Challenge3/Readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Host/Guide/Challenge5/readme.md)
+[< Previous Challenge](/Host/Guide/Challenge3/Readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Host/Guide/Challenge5/README.md)
 
 ## Story
 Worldwide importers wanted to build out their data warehouse to include clickstream data.  There are a number of online stores that the marketing department wants to track for campaign and online ads.  These marketing users want to monitor the clickstream data and have the ability to run exploratory data analysis to support ad-hoc research.  This data needs to be real-time so the campaigns and ads are timely based on user activity in the online stores.

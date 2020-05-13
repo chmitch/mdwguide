@@ -29,7 +29,7 @@ In order to deliver this hack there is a variety of supporting content.   This c
 2.  [Data Lake Integration](./Guide/Challenge2/Readme.md)
 3.  [Data Pipeline Migration](./Guide/Challenge3/Readme.md)
 4.  [Real-time Data pipeline](./Guide/Challenge4/README.md)
-5.  [Analytics migration](./Guide/Challenge5/readme.md)
+5.  [Analytics migration](./Guide/Challenge5/README.md)
 
 ### Solution Scripts
 1.  [Data Warehouse Migration](./Solutions/Challenge1)

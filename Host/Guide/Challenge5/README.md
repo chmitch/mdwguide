@@ -1,6 +1,6 @@
 # 	Challenge 5 -- Analytics Migration
 
-[<Previous Challenge](/Student/Challenges/Challenge4/README.md)
+[<Previous Challenge](/Host/Guide/Challenge4/README.md)
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ The objective of this lab is to build out a tabular model and Power BI reports. 
 | Azure Synapse Analytics & Power BI concurrency | <https://www.jamesserra.com/archive/2019/12/azure-synapse-analytics-power-bi-concurrency/> |
 | Azure Synapse Analytics & Power BI performance| <https://www.jamesserra.com/archive/2019/12/azure-synapse-analytics-power-bi/> |
 | Table Design in Synapse    | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview>                                |
-| Best practices for Synapse | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices#tune-query-performance-with-new-product-enhancements> |
+| Best practices for Synapse | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices> |
 | Monitor resource utilization  | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity?view=azure-sqldw-latest> |
 | Workload Isolation  | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation?view=azure-sqldw-latest> |
 | Performance Tuning | https://medium.com/@ian.shchoy/azure-sql-data-warehouse-deep-dive-into-data-distribution-f4cf8f1e340a |
