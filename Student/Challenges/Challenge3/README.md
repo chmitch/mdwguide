@@ -5,7 +5,7 @@
 ## Introduction
 WWI importers keep missing their SLAs in terms of the nightly loads.  The loads take six hours to complete and start each evening at 1:00AM.  They must complete by 8:00AM but frequenly these jobs are taking longer than usual.  A few critical stakeholders are asking them to provide data more frequently on an hourly basis.  Since these business units are their key stakeholders they have the funding to help replatform their data pipelines.  WWI importers realizes they need to build a staging tier in their Data Lake and load this into their Data Warehouse.  These data pipelines must be ELT (Extract, Load & Transform) so they can quickly write the data to the cloud and scale out the compute to transform the data.
 
-## Overview
+## Description
 The objetive of this lab is to modernize the ETL pipeline that was originally built in SSIS that designed to update the fact and dimension tables in the WideWorldImportersDW database using cloud native technologies in Azure.  The data flow will be to extract the data from the OLTP platform, store it in the Azure Data Lake and bulk ingest it into Azure Synapase Analytics.  This will be run on a nightly basis so leverage Azure Data Factory as a job orchestration and scheduling tool.
 
 Note: This challenge is intended to build upon the previous 2 challenges, and you should try to reuse content wherever possible
