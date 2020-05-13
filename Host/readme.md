@@ -26,18 +26,18 @@ In order to deliver this hackshop there is a variety of supporting content.   Th
 
 ## Challenges
 1.  [Data Warehouse Migration](./Guide/Challenge1/readme.md)
-2.  [Data Lake Integration](./Guide/Challenge2/readme.md)
-3.  [Data Pipeline Migration](./Guide/Challenge3/readme.md)
+2.  [Data Lake Integration](./Guide/Challenge2/Readme.md)
+3.  [Data Pipeline Migration](./Guide/Challenge3/Readme.md)
 4.  [Real-time Data pipeline](./Guide/Challenge4/README.md)
 5.  [Analytics migration](./Guide/Challenge5/readme.md)
 
 ### Solution Scripts
 
 1.  [Data Warehouse Migration](./Solutions/Challenge1)
-2.  [Data Lake Integration](./Solutions/Challenge2/readme.md)
+2.  [Data Lake Integration](./Solutions/Challenge2)
 3.  [Data Pipeline Migration](./Solutions/Challenge3)
 4.  [Real-time Data pipeline](./Solutions/Challenge4)
-5.  [Analytics migration](./Solutions/Challenge5/readme.md)
+5.  [Analytics migration](./Solutions/Challenge5)
 
 
 ### Ideas for other Challenges (Punch List)

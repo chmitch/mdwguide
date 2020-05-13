@@ -1,5 +1,7 @@
 # 	Challenge 2: Data Lake integration
 
+[< Previous Challenge](/Host/Guide/Challenge1/readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Host/Guide/Challenge3/Readme.md)
+
 ## Introduction
 
 Now that WWI has migrated their DW into Azure Synapse Analytics, they are ready to proceed to second stage of their modernization which is Data Lake Integration.  This will include the creation and configuration of Azure Data Lake Storage (ADLS).  Once created, they will use this data lake for data migration activities, storage, and analytics. The objective of this challenge is to build out a new data lake, and create pipelines to transfer data from their on prem OLTP system into it.
@@ -44,5 +46,7 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
                 - iterate over list of tables
                 - Execute Pipeline task to execute pipeline create above (Note: you will need to pass in table name as parameter)
 
+## SOLUTIONS
+[Go to Solution](/Host/Solutions/Challenge2)
 
 

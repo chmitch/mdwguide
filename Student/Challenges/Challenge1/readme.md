@@ -74,7 +74,9 @@ There will be four different object types we'll migrate:
 1. [Data Skew due to Distribution Key](https://github.com/rgl/azure-content/blob/master/articles/sql-data-warehouse/sql-data-warehouse-manage-distributed-data-skew.md)
 
 ### SSIS Job
-1.  [Github repo](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac) 
+1. [Github repo](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0) (Daily.ETL.ispac) 
+1. [Provision SSIS Runtime in Azure](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-deploy-ssis-packages-azure)
+1. [Deploy SSIS Pakcage](https://docs.microsoft.com/en-us/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial?view=sql-server-ver15)
 
 ## Tips
 1. Determine your distribution column (HINT IDENTITY Column can not be your distribution key)

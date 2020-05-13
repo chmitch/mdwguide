@@ -1,5 +1,7 @@
 # 	Challenge 4 --  Streaming data
 
+[< Previous Challenge](/Host/Guide/Challenge3/Readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Host/Guide/Challenge5/readme.md)
+
 ## Story
 Worldwide importers wanted to build out their data warehouse to include clickstream data.  There are a number of online stores that the marketing department wants to track for campaign and online ads.  These marketing users want to monitor the clickstream data and have the ability to run exploratory data analysis to support ad-hoc research.  This data needs to be real-time so the campaigns and ads are timely based on user activity in the online stores.
 
@@ -49,3 +51,6 @@ Execute the Databricks notebook configured above to create streaming dataset, an
 
 ## Query the Data
 Have the team reuse the queries in the Databricks notebook and create an aggregate query to show their SQL, Scala or Python skills.  This is a standalone table and doesn't directly integrate into Azure Synapse Analytics.  
+
+## SOLUTIONS
+[Go to Solution](/Host/Solutions/Challenge4)

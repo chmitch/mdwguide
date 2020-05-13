@@ -1,5 +1,7 @@
 # Lab 1 -- Data Warehouse migration from On-premise to Azure Synapse Analytics
 
+[Next Challenge>](/Host/Guide/Challenge2/Readme.md)
+
 ## Story
 
 WWI wants to modernize their data warehouse in phases.  The first stage will be to scale-out horizontally their existing data warehouse (SQL Server OLAP) to Azure Synapse Analytics.
@@ -128,3 +130,6 @@ Setup your SSIS job following these instructions. [Reference document](https://d
 ## LOAD DATA
 
 Congratulations!!! The migration is complete.  Run your SSIS jobs to load data from OLTP to OLAP data warehouse.  You might want to create a load control table to setup incremental loads.  This will validate you've completed all steps successfully.  Compare the results of the WWI OLAP database vs. the one you've migrated into Azure Synapse Analytics.
+
+## SOLUTIONS
+[Go to Solution](/Host/Solutions/Challenge1)
