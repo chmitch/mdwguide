@@ -2,7 +2,7 @@
 CREATE SCHEMA [Fact]
 GO
 
-/****** Object:  Table [Fact].[Movement]    Script Date: 4/9/2020 9:00:54 AM ******/
+/****** Object:  Table [Fact].[Movement]    Script Date: 5/12/2020 3:25:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -24,7 +24,10 @@ CREATE TABLE [Fact].[Movement]
 WITH
 (
 	DISTRIBUTION = HASH ( [WWI Stock Item Transaction ID] ),
-	CLUSTERED COLUMNSTORE INDEX
+	CLUSTERED INDEX
+	(
+		[Movement Key] ASC
+	)
 )
 GO
 
