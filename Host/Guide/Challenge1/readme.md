@@ -1,4 +1,4 @@
-# Lab 1 -- Data Warehouse migration from On-premise to Azure Synapse Analytics
+# Lab 1 -- Data Warehouse Migration
 
 [Next Challenge>](/Host/Guide/Challenge2/Readme.md)
 

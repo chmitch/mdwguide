@@ -1,4 +1,4 @@
-# 	Challenge 4 --  Streaming data
+# 	Challenge 4 --  Real-time Data Pipelines
 
 [< Previous Challenge](/Host/Guide/Challenge3/Readme.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Next Challenge>](/Host/Guide/Challenge5/readme.md)
 
