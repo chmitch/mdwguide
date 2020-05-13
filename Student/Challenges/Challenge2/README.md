@@ -12,11 +12,11 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
 
 ## Success Criteria
 1. Deploy a new storage account resource.
-2. Define directory structure to support data lake use cases including:
+2. Define directory structure to support data lake use cases as follows;
     - 2 parent directories created: 
-        - '\In' (or Staging Data) - This will the sink location used as the landing zone for data being copied into your data lake.
-        - '\Out' (or processed data) - This will be the location published to downstream systems that might consume the data once it has been processed.
-    - Within each of these folders, you should consider creating a separate folder for each of the tables being loaded into your DW.
+        - '\In' (or Staging Data) - This will the sink location used as the landing zone for staging your data.
+        - '\Out' (or processed data) - This will be the location for downstream systems to consume the data once it has been processed.
+    - Within each of these folders, you should consider creating folders for tables, systems and dates loaded into your DW.
 3. Configure folder level security in your new data lake storage 
     - only your ETL job should be able to write to your \IN directory
     - you should be able to grant individual access to users who may want to access your \Out directory based on AAD credentials
@@ -24,7 +24,6 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
 5. Create a pipeline to copy data into ADLS
     - Your pipeline should contain at least one copy activity that copies data from a source table in the WideWorldImporters OLTP database into a file in your new data lake
         - Your data source should leverage the [Integration].[Get[[TableName]]Updates] stored procedures that already exist in the source
-        - You should parameterize the source and sink properties in your pipeline where possible so that you can re-use the same pipeline for all additional tables being copied
 
 ## Stage 2 Architecture
 ![The Solution diagram is described in the text following this diagram.](/images/Challenge2.png)
@@ -44,9 +43,8 @@ Note: This challenge is intended to build upon challenge 1, and you should try t
     - What types of processes will you need to be able to support?
     - How will you secure access to directories?
 2. In addition to using the azure portal directly, you can view and manage your new storage account using the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) 
-3. In order to avoid re-loading the tables in their entirety every time our job runs, we are following an "incremental load" pattern.  Think about how you may be able to find and use start and end date parameters for each table
 
 ## Additional Challenges
+1. Parameterize the source and sink properties in your pipeline where possible so that you can re-use the same pipeline for all additional tables being copied
+1. Develop an incremental load pattern for each copy activity to extract the data from the source table.  This will prevent us from doing a full load each night and large load times.
 1. [Deploy Azure Databricks workspace, mount your new storage and enable interactive queries and analytics!](https://docs.microsoft.com/en-us/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/databricks/toc.json&bc=/azure/databricks/breadcrumb/toc.json)
-
-
