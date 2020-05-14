@@ -18,6 +18,10 @@ These are supplemental scripts required to support ADF solution contained in thi
 4. [proc_Integration.GetUpdates_wrapper](./Scripts/proc_Integration.GetUpdates_wrapper.sql) - this procedure should be compiled in the WideWorldImporters source database.  It will be used to dynamically call the table specific source queries that will be used as the source of the ADF copy pipelines.
 5. [proc_Integration.Ingest@@@Data](./Scripts/) - The remaining procedures should be compiled in the WideWorldImportersDW database.  They are used to dynamically create External tables and create and load into materialized tables in the sql pool
 
+### Data Factory Objects
+
+These objects can be used to deply each component required to build out your Azure Data Factory datasets and pipelines
+
 ### ARM Templates
 
 These templates can be used to deploy resources required to complete this solution.

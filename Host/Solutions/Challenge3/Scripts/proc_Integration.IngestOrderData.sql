@@ -37,7 +37,7 @@ CREATE EXTERNAL TABLE [Integration].[FactOrder_external] (
 )
 WITH
 (
-    LOCATION=''/Order''
+    LOCATION=''/In/Order''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

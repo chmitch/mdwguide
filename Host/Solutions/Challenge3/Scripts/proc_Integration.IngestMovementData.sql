@@ -28,7 +28,7 @@ CREATE EXTERNAL TABLE [Integration].[FactMovement_external] (
 )
 WITH
 (
-    LOCATION=''/Movement''
+    LOCATION=''/In/Movement''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

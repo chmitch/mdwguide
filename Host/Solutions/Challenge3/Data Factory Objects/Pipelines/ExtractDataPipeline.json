@@ -1,0 +1,312 @@
+{
+    "name": "ExtractData",
+    "properties": {
+        "activities": [
+            {
+                "name": "CopyData",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "LookupStartDate",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    },
+                    {
+                        "activity": "LookupEndDate",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "sqlReaderStoredProcedureName": {
+                            "value": "@concat('Integration.[Get', replace(pipeline().parameters.TableName, ' ', ''), 'Updates]')",
+                            "type": "Expression"
+                        },
+                        "storedProcedureParameters": {
+                            "LastCutoff": {
+                                "type": "String",
+                                "value": {
+                                    "value": "@activity('LookupStartDate').output.firstRow.CutoffTime",
+                                    "type": "Expression"
+                                }
+                            },
+                            "NewCutoff": {
+                                "type": "String",
+                                "value": {
+                                    "value": "@activity('LookupEndDate').output.firstRow.Load_Date",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        "queryTimeout": "02:00:00"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "WideWorldImporters",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "AzureDataLake",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "TableName": {
+                                "value": "@pipeline().parameters.TableName",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "LookupStartDate",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "sqlReaderQuery": {
+                            "value": "@concat('select [Cutoff Time] as CutoffTime\nfrom Integration.[ETL Cutoff]\nWHERE [Table Name] = ''', pipeline().parameters.TableName, '''')",
+                            "type": "Expression"
+                        },
+                        "queryTimeout": "02:00:00"
+                    },
+                    "dataset": {
+                        "referenceName": "AzureSynapseAnalytics",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "LookupEndDate",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "sqlReaderQuery": "select Load_Date \nfrom integration.[load_control]",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "dataset": {
+                        "referenceName": "AzureSynapseAnalytics",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "Stage Data",
+                "type": "SqlServerStoredProcedure",
+                "dependsOn": [
+                    {
+                        "activity": "CopyData",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "storedProcedureName": {
+                        "value": "@concat('[Integration].[Ingest',replace(pipeline().parameters.TableName, ' ', ''),'Data]')",
+                        "type": "Expression"
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureSynapseAnalytics",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Merge Data",
+                "type": "SqlServerStoredProcedure",
+                "dependsOn": [
+                    {
+                        "activity": "Create Lineage Key",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "storedProcedureName": {
+                        "value": "@concat('Integration.MigrateStaged', replace(pipeline().parameters.TableName, ' ', ''), 'Data')",
+                        "type": "Expression"
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureSynapseAnalytics",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Create Lineage Key",
+                "type": "SqlServerStoredProcedure",
+                "dependsOn": [
+                    {
+                        "activity": "Stage Data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "storedProcedureName": "[Integration].[CreateLineageKey]",
+                    "storedProcedureParameters": {
+                        "TableName": {
+                            "value": {
+                                "value": "@pipeline().parameters.TableName",
+                                "type": "Expression"
+                            },
+                            "type": "String"
+                        }
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureSynapseAnalytics",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Archive Data",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Merge Data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "AzureDataLake",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "TableName": {
+                                "value": "@pipeline().parameters.TableName",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "AzureDataLakeArchive",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "TableName": {
+                                "value": "@pipeline().parameters.TableName",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
+        "parameters": {
+            "TableName": {
+                "type": "string",
+                "defaultValue": "City"
+            }
+        },
+        "annotations": []
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}

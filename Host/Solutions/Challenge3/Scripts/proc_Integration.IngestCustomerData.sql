@@ -25,7 +25,7 @@ CREATE EXTERNAL TABLE [Integration].[DimCustomer_external] (
 )
 WITH
 (
-    LOCATION=''/Customer''
+    LOCATION=''/In/Customer''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

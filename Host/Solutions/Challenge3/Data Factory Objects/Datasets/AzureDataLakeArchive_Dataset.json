@@ -1,5 +1,5 @@
 {
-    "name": "AzureDataLake",
+    "name": "AzureDataLakeArchive",
     "properties": {
         "linkedServiceName": {
             "referenceName": "AzureDataLakeStorage1",
@@ -16,20 +16,20 @@
             "location": {
                 "type": "AzureBlobFSLocation",
                 "fileName": {
-                    "value": "@concat(replace(dataset().TableName, ' ', ''), '.txt')",
+                    "value": "@concat(replace(dataset().TableName, ' ', ''),  utcnow(), '.txt')",
                     "type": "Expression"
                 },
                 "folderPath": {
-                    "value": "@concat('WWIDW/In/',dataset().TableName)",
+                    "value": "@concat('WWIDW/Out/',dataset().TableName)",
                     "type": "Expression"
                 },
                 "fileSystem": "mdwhack"
             },
-            "columnDelimiter": "|",
+            "columnDelimiter": ",",
             "escapeChar": "\\",
-            "quoteChar": ""
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
         },
         "schema": []
-    },
-    "type": "Microsoft.DataFactory/factories/datasets"
+    }
 }

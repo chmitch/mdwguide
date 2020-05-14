@@ -22,7 +22,7 @@ CREATE EXTERNAL TABLE [Integration].[DimEmployee_external] (
 )
 WITH
 (
-    LOCATION=''/Employee''
+    LOCATION=''/In/Employee''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

@@ -37,7 +37,7 @@ CREATE EXTERNAL TABLE [Integration].[FactTransaction_external] (
 )
 WITH
 (
-    LOCATION=''/Transaction''
+    LOCATION=''/In/Transaction''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
