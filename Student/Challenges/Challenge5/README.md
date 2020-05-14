@@ -14,7 +14,7 @@ The objective of this lab is to build out a tabular model and Power BI reports. 
 1. Add FactSales, DimensionDate, DimensionCustomer, DimensionCity, DimensionEmployee and DimensionStockItems to the model and corresponding dimension tables.  Create relationship between tables
 1. Create report similar to template in section called, "Power BI report Page 1".  Call report page "High Level Dashboard"
 1. Create report similar to template in section called, "Power BI report Page 2". Call report page "Sales Detail"
-1. Click on each page and record query durations.  Go to Azure Portal look for Monitoring and Query Activity.  Record baseline for each page
+1. Leverage the tool within Power BI called 'Performance Analyzer' under 'View' tool tab. Once the 'Performance analyzer Panel showed up on right. Click on 'Start recording'. Then Click on each page and record query durations. Record baseline for each page.
 1. Copy each query from the Query ID field and use this query in SSMS
 1. Go to SSMS and run each query from above step with and without result cache on/off.  Record new response times
 1. Tune Power BI model and report with Composite model and use performance analyzer to tune the model performance
@@ -34,6 +34,9 @@ The objective of this lab is to build out a tabular model and Power BI reports. 
 | Tune with result set cache | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/performance-tuning-result-set-caching> |
 | Azure Synapse Analytics & Power BI performance| <https://www.jamesserra.com/archive/2019/12/azure-synapse-analytics-power-bi/> |
 | Monitor resource utilization  | <https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity?view=azure-sqldw-latest> |
+| Power BI Composite Model |<https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-composite-models>|
+| Power BI change table storage mode| <https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-storage-mode>|
+| Power BI Aggregated Table |<https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-aggregations>|
 | Performance Tuning | https://medium.com/@ian.shchoy/azure-sql-data-warehouse-deep-dive-into-data-distribution-f4cf8f1e340a |
 
 
