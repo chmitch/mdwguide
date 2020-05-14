@@ -19,7 +19,7 @@ CREATE EXTERNAL TABLE [Integration].[DimPaymentMethod] (
 )
 WITH
 (
-    LOCATION=''/Payment Method''
+    LOCATION=''/In/Payment Method''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

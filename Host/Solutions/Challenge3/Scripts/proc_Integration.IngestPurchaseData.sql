@@ -29,7 +29,7 @@ CREATE EXTERNAL TABLE [Integration].[FactPurchase] (
 )
 WITH
 (
-    LOCATION=''/Purchase''
+    LOCATION=''/In/Purchase''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

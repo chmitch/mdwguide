@@ -27,7 +27,7 @@ CREATE EXTERNAL TABLE [Integration].[DimCity_external] (
 )
 WITH
 (
-    LOCATION=''/City''
+    LOCATION=''/In/City''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

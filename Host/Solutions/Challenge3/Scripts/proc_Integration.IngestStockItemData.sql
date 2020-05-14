@@ -33,7 +33,7 @@ CREATE EXTERNAL TABLE [Integration].[DimStockItem_external] (
 )
 WITH
 (
-    LOCATION=''/Stock Item''
+    LOCATION=''/In/Stock Item''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

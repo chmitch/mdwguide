@@ -22,7 +22,7 @@ CREATE EXTERNAL TABLE [Integration].[DimTransactionType_external] (
 )
 WITH
 (
-    LOCATION=''/Transaction Type''
+    LOCATION=''/In/Transaction Type''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE

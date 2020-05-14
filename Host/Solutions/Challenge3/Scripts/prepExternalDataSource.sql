@@ -12,7 +12,7 @@ CREATE MASTER KEY;
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = 'user',
-    SECRET = 'Rdq6iWgiyDAWXcQvcwhu5myy/TsO6quxK8hPBENRWOST5yfvPMCW5dxtwa9g0jgQ52Im9t26r/pIeanPpg02Jw=='
+    SECRET = '[secret]'
 ;
 
 -- C (for Gen2): Create an external data source
@@ -23,7 +23,7 @@ WITH
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfss://akmdwstorage@akmdwhackstorage.dfs.core.windows.net/Dev/WWIDW/ETL', -- Please note the abfss endpoint for when your account has secure transfer enabled
+    LOCATION='abfss://[container]@[storageaccount].dfs.core.windows.net/WWIDW', -- Please note the abfss endpoint for when your account has secure transfer enabled
     CREDENTIAL = ADLSCredential
 );
 
@@ -32,7 +32,7 @@ WITH (
 -- STRING_DELIMITER: Specifies the field terminator for data of type string in the text-delimited file.
 -- DATE_FORMAT: Specifies a custom format for all date and time data that might appear in a delimited text file.
 -- Use_Type_Default: Store missing values as default for datatype.
-
+--drop external file format textfileformat
 CREATE EXTERNAL FILE FORMAT TextFileFormat
 WITH
 (   FORMAT_TYPE = DELIMITEDTEXT

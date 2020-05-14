@@ -26,7 +26,7 @@ CREATE EXTERNAL TABLE [Integration].[FactStockHolding] (
 )
 WITH
 (
-    LOCATION=''/Stock Holding''
+    LOCATION=''/In/Stock Holding''
 ,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
