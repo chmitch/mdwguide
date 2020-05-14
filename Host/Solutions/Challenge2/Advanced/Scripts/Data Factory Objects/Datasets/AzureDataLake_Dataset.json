@@ -5,16 +5,24 @@
             "referenceName": "AzureDataLakeStorage1",
             "type": "LinkedServiceReference"
         },
+        "parameters": {
+            "TableName": {
+                "type": "string"
+            }
+        },
         "annotations": [],
         "type": "DelimitedText",
         "typeProperties": {
             "location": {
                 "type": "AzureBlobFSLocation",
                 "fileName": {
-                    "value": "@concat('City_',utcnow(), '.txt')",
+                    "value": "@concat(replace(dataset().TableName, ' ', ''),utcnow(), '.txt')",
                     "type": "Expression"
                 },
-                "folderPath": "WWIDW/In/City",
+                "folderPath": {
+                    "value": "@concat('WWIDW/In/',dataset().TableName)",
+                    "type": "Expression"
+                },
                 "fileSystem": "mdwhack"
             },
             "columnDelimiter": "|",
