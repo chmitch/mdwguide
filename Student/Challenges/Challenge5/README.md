@@ -2,14 +2,9 @@
 
 [<Previous Challenge](/Student/Challenges/Challenge4/README.md)
 
-## Prerequisites
-
-1. [Challenges 1 to 4] -- (./Coach/Lab4 final) should be done successfully.
-2. Download [Power BI Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=58494) 
-
 ## Introduction
 
-WWI leadership team wants to leverage Power BI modeling capability to create anaytic data models from the data in Azure Synapse Analytics (ASA). Next, they want to empower different analysts from different organizations to use Power BI reporting capability and build out analytics reports and dashboards from those data models. The final solution needs to consider both report design as well as optimal response times.  Dashboards need to return in less 5 seconds.
+WWI leadership team wants to leverage Power BI modeling capability to create analytic data models from the data in Azure Synapse Analytics (ASA). Next, they want to empower different analysts from different organizations to use Power BI reporting capability and build out analytics reports and dashboards from those data models. The final solution needs to consider both report design as well as optimal response times.  Dashboards need to return in less 5 seconds.
 
 ## Description
 The objective of this lab is to build out a tabular model and Power BI reports.  BI analysts will use Power BI Desktop to build out this model and reports.  At the beginning the performance is suboptimal and you will need to tune the model, optimize the database and redesign the reports.
@@ -17,11 +12,18 @@ The objective of this lab is to build out a tabular model and Power BI reports. 
 ## Success Criteria
 1. Open Power BI Desktop and create data connection to Azure Synapse in Direct Query Mode
 1. Add FactSales, DimensionDate, DimensionCustomer, DimensionCity, DimensionEmployee and DimensionStockItems to the model and corresponding dimension tables.  Create relationship between tables
-1. Create few report pages in Power BI Desktop.
-1. Click on specific reports/dashboards to see query response times and record baseline
-1. Turn on Peformance Analyzer in Power BI Desktop
-1. Got to SSMS and run querys to Turn result cache on and off to see difference in response times
-1. Tune model and report with Composite model and use performance analyzer to tune the model performance
+1. Create report similar to template in section called, "Power BI report Page 1".  Call report page "High Level Dashboard"
+1. Create report similar to template in section called, "Power BI report Page 2". Call report page "Sales Detail"
+1. Click on each page and record query durations.  Go to Azure Portal look for Monitoring and Query Activity.  Record baseline for each page
+1. Copy each query from the Query ID field and use this query in SSMS
+1. Go to SSMS and run each query from above step with and without result cache on/off.  Record new response times
+1. Tune Power BI model and report with Composite model and use performance analyzer to tune the model performance
+
+## Power BI Report Page 1
+![The Power BI Report Template to recreate for Challenge 5](/images/pbipg1.png)
+
+## Power BI Report Page 2 
+![The Power BI Report Template to recreate for Challenge 5](/images/pbipg2.png)
 
 
 ## Learning resources
