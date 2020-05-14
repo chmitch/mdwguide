@@ -1,0 +1,13 @@
+{
+    "name": "WideWorldImporters",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "WWI",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "SqlServerTable",
+        "schema": []
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
