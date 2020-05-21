@@ -1125,4 +1125,18 @@ BEGIN
 
 END;
 GO
-
+TRUNCATE TABLE [Integration].[ETL Cutoff] 
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('City','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Customer','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Date','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Employee','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Movement','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Order','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Payment Method','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Purchase','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Sale','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Stock Holding','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Stock Item','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Supplier','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Transaction','2012-12-31 00:00:00.0000000')
+INSERT INTO [Integration].[ETL Cutoff]([Table Name],[Cutoff Time]) VALUES ('Transaction Type','2012-12-31 00:00:00.0000000')

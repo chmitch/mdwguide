@@ -17,7 +17,7 @@ GO
 INSERT INTO [Integration].[Load_Control]
            ([Load_Date])
      VALUES
-           ('2016-07-01 12:31:17.0000000')
+           ('2020-01-01 23:59:59.0000000')
 
 --UPDATE [Integration].[Load_Control]
 --   SET [Load_Date] = '2016-07-01 12:31:17.0000000'
